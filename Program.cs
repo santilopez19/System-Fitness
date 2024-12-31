@@ -16,7 +16,7 @@ namespace System_Fitness
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LogIn());
+            Application.Run(new Menu());
         }
     }
 }

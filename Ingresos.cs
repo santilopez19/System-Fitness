@@ -10,20 +10,11 @@ using System.Windows.Forms;
 
 namespace System_Fitness
 {
-    public partial class LogIn : Form
+    public partial class Ingresos : UserControl
     {
-        public LogIn()
+        public Ingresos()
         {
             InitializeComponent();
-        }
-        private void guna2ContainerControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2ContainerControl2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
