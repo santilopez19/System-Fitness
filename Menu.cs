@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Caching;
 using System.Windows.Forms;
 
 namespace System_Fitness
@@ -17,16 +18,94 @@ namespace System_Fitness
             InitializeComponent();
         }
 
-        private void ShowUserControl(UserControl control)
+        // Método para cargar cualquier UserControl
+        private void CargarUserControl(UserControl userControl)
         {
-            // Limpia el panel y carga el nuevo UserControl
-            mainPanel.Controls.Clear();
-            control.Dock = DockStyle.Fill;
-            mainPanel.Controls.Add(control);
+            mainPanel.Controls.Clear(); // Limpia el panel principal
+            userControl.Dock = DockStyle.Fill; // Ajusta el UserControl al panel
+            mainPanel.Controls.Add(userControl); // Agrega el UserControl al panel
         }
+
         private void btnInicio_Click(object sender, EventArgs e)
         {
-            ShowUserControl(new Inicio());
+            // Cargar UserControl de inicio
+            Inicio inicioControl = new Inicio();
+            CargarUserControl(inicioControl);
         }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            // Cargar UserControl de clientes
+            Clientes clientesControl = new Clientes();
+            CargarUserControl(clientesControl);
+        }
+
+        private void btnpagos_Click(object sender, EventArgs e)
+        {
+            // Cargar UserControl de pagos
+            Pagos pagosControl = new Pagos();
+            CargarUserControl(pagosControl);
+        }
+
+        private void btnRutinas_Click(object sender, EventArgs e)
+        {
+            // Cargar UserControl de rutinas
+            Rutinas rutinasControl = new Rutinas();
+            CargarUserControl(rutinasControl);
+        }
+
+        private void btnFinance_Click(object sender, EventArgs e)
+        {
+            // Cargar UserControl de finanzas
+            Finanzas financeControl = new Finanzas();
+            CargarUserControl(financeControl);
+        }
+
+        private void btnCalendario_Click(object sender, EventArgs e)
+        {
+            // Cargar UserControl de calendario
+            Calendario calendarioControl = new Calendario();
+            CargarUserControl(calendarioControl);
+        }
+
+        private void btnEstadistica_Click(object sender, EventArgs e)
+        {
+            // Cargar UserControl de estadísticas
+            Estadistica estadisticaControl = new Estadistica();
+            CargarUserControl(estadisticaControl);
+        }
+
+        private void btnIngresos_Click(object sender, EventArgs e)
+        {
+            // Cargar UserControl de ingresos
+            Ingresos ingresosControl = new Ingresos();
+            CargarUserControl(ingresosControl);
+        }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            // Cargar UserControl de configuración
+            Configuracion configuracionControl = new Configuracion();
+            CargarUserControl(configuracionControl);
+        }
+
+        public static DataSet DataSetCache = new DataSet();
+
+
+
+        public static DataTable ObtenerTabla(string nombreTabla)
+        {
+            if (DataSetCache.Tables.Contains(nombreTabla))
+            {
+                return DataSetCache.Tables[nombreTabla];
+            }
+            else
+            {
+                throw new Exception($"La tabla {nombreTabla} no está en la caché.");
+            }
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        { }
     }
 }

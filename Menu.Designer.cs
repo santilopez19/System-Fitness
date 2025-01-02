@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2ContainerControl1 = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.ContenedorSuperior = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.guna2ContainerControl2 = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.ContenedorLateral = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.btnConfig = new Guna.UI2.WinForms.Guna2Button();
             this.btnIngresos = new Guna.UI2.WinForms.Guna2Button();
             this.btnEstadistica = new Guna.UI2.WinForms.Guna2Button();
@@ -40,26 +40,26 @@
             this.btnCalendario = new Guna.UI2.WinForms.Guna2Button();
             this.btnClientes = new Guna.UI2.WinForms.Guna2Button();
             this.btnInicio = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2ContainerControl3 = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.ContenedorCentral = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.guna2ContainerControl1.SuspendLayout();
-            this.guna2ContainerControl2.SuspendLayout();
-            this.guna2ContainerControl3.SuspendLayout();
+            this.ContenedorSuperior.SuspendLayout();
+            this.ContenedorLateral.SuspendLayout();
+            this.ContenedorCentral.SuspendLayout();
             this.SuspendLayout();
             // 
-            // guna2ContainerControl1
+            // ContenedorSuperior
             // 
-            this.guna2ContainerControl1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ContainerControl1.BorderColor = System.Drawing.Color.White;
-            this.guna2ContainerControl1.BorderRadius = 15;
-            this.guna2ContainerControl1.Controls.Add(this.lblNombre);
-            this.guna2ContainerControl1.FillColor = System.Drawing.Color.SteelBlue;
-            this.guna2ContainerControl1.Location = new System.Drawing.Point(16, 17);
-            this.guna2ContainerControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2ContainerControl1.Name = "guna2ContainerControl1";
-            this.guna2ContainerControl1.Size = new System.Drawing.Size(2228, 57);
-            this.guna2ContainerControl1.TabIndex = 1;
-            this.guna2ContainerControl1.Text = "guna2ContainerControl1";
+            this.ContenedorSuperior.BackColor = System.Drawing.Color.Transparent;
+            this.ContenedorSuperior.BorderColor = System.Drawing.Color.White;
+            this.ContenedorSuperior.BorderRadius = 15;
+            this.ContenedorSuperior.Controls.Add(this.lblNombre);
+            this.ContenedorSuperior.FillColor = System.Drawing.Color.SteelBlue;
+            this.ContenedorSuperior.Location = new System.Drawing.Point(16, 17);
+            this.ContenedorSuperior.Margin = new System.Windows.Forms.Padding(2);
+            this.ContenedorSuperior.Name = "ContenedorSuperior";
+            this.ContenedorSuperior.Size = new System.Drawing.Size(2228, 57);
+            this.ContenedorSuperior.TabIndex = 1;
+            this.ContenedorSuperior.Text = "guna2ContainerControl1";
             // 
             // lblNombre
             // 
@@ -72,27 +72,27 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "System Fitness";
             // 
-            // guna2ContainerControl2
+            // ContenedorLateral
             // 
-            this.guna2ContainerControl2.BorderRadius = 15;
-            this.guna2ContainerControl2.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-            this.guna2ContainerControl2.BorderThickness = 10;
-            this.guna2ContainerControl2.Controls.Add(this.btnConfig);
-            this.guna2ContainerControl2.Controls.Add(this.btnIngresos);
-            this.guna2ContainerControl2.Controls.Add(this.btnEstadistica);
-            this.guna2ContainerControl2.Controls.Add(this.btnpagos);
-            this.guna2ContainerControl2.Controls.Add(this.btnRutinas);
-            this.guna2ContainerControl2.Controls.Add(this.btnFinance);
-            this.guna2ContainerControl2.Controls.Add(this.btnCalendario);
-            this.guna2ContainerControl2.Controls.Add(this.btnClientes);
-            this.guna2ContainerControl2.Controls.Add(this.btnInicio);
-            this.guna2ContainerControl2.FillColor = System.Drawing.Color.SkyBlue;
-            this.guna2ContainerControl2.Location = new System.Drawing.Point(16, 87);
-            this.guna2ContainerControl2.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2ContainerControl2.Name = "guna2ContainerControl2";
-            this.guna2ContainerControl2.Size = new System.Drawing.Size(188, 1059);
-            this.guna2ContainerControl2.TabIndex = 2;
-            this.guna2ContainerControl2.Text = "guna2ContainerControl2";
+            this.ContenedorLateral.BorderRadius = 15;
+            this.ContenedorLateral.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            this.ContenedorLateral.BorderThickness = 10;
+            this.ContenedorLateral.Controls.Add(this.btnConfig);
+            this.ContenedorLateral.Controls.Add(this.btnIngresos);
+            this.ContenedorLateral.Controls.Add(this.btnEstadistica);
+            this.ContenedorLateral.Controls.Add(this.btnpagos);
+            this.ContenedorLateral.Controls.Add(this.btnRutinas);
+            this.ContenedorLateral.Controls.Add(this.btnFinance);
+            this.ContenedorLateral.Controls.Add(this.btnCalendario);
+            this.ContenedorLateral.Controls.Add(this.btnClientes);
+            this.ContenedorLateral.Controls.Add(this.btnInicio);
+            this.ContenedorLateral.FillColor = System.Drawing.Color.SkyBlue;
+            this.ContenedorLateral.Location = new System.Drawing.Point(16, 87);
+            this.ContenedorLateral.Margin = new System.Windows.Forms.Padding(2);
+            this.ContenedorLateral.Name = "ContenedorLateral";
+            this.ContenedorLateral.Size = new System.Drawing.Size(188, 1059);
+            this.ContenedorLateral.TabIndex = 2;
+            this.ContenedorLateral.Text = "guna2ContainerControl2";
             // 
             // btnConfig
             // 
@@ -115,6 +115,7 @@
             this.btnConfig.TabIndex = 8;
             this.btnConfig.Text = "Configuracion";
             this.btnConfig.UseTransparentBackground = true;
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
             // btnIngresos
             // 
@@ -137,6 +138,7 @@
             this.btnIngresos.TabIndex = 7;
             this.btnIngresos.Text = "Ingresos";
             this.btnIngresos.UseTransparentBackground = true;
+            this.btnIngresos.Click += new System.EventHandler(this.btnIngresos_Click);
             // 
             // btnEstadistica
             // 
@@ -159,6 +161,7 @@
             this.btnEstadistica.TabIndex = 6;
             this.btnEstadistica.Text = "Estadistica";
             this.btnEstadistica.UseTransparentBackground = true;
+            this.btnEstadistica.Click += new System.EventHandler(this.btnEstadistica_Click);
             // 
             // btnpagos
             // 
@@ -181,6 +184,7 @@
             this.btnpagos.TabIndex = 5;
             this.btnpagos.Text = "Pagos";
             this.btnpagos.UseTransparentBackground = true;
+            this.btnpagos.Click += new System.EventHandler(this.btnpagos_Click);
             // 
             // btnRutinas
             // 
@@ -203,6 +207,7 @@
             this.btnRutinas.TabIndex = 4;
             this.btnRutinas.Text = "Rutinas";
             this.btnRutinas.UseTransparentBackground = true;
+            this.btnRutinas.Click += new System.EventHandler(this.btnRutinas_Click);
             // 
             // btnFinance
             // 
@@ -225,6 +230,7 @@
             this.btnFinance.TabIndex = 3;
             this.btnFinance.Text = "Finanzas";
             this.btnFinance.UseTransparentBackground = true;
+            this.btnFinance.Click += new System.EventHandler(this.btnFinance_Click);
             // 
             // btnCalendario
             // 
@@ -247,6 +253,7 @@
             this.btnCalendario.TabIndex = 2;
             this.btnCalendario.Text = "Calendario";
             this.btnCalendario.UseTransparentBackground = true;
+            this.btnCalendario.Click += new System.EventHandler(this.btnCalendario_Click);
             // 
             // btnClientes
             // 
@@ -269,6 +276,7 @@
             this.btnClientes.TabIndex = 1;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseTransparentBackground = true;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // btnInicio
             // 
@@ -293,19 +301,19 @@
             this.btnInicio.UseTransparentBackground = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
-            // guna2ContainerControl3
+            // ContenedorCentral
             // 
-            this.guna2ContainerControl3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ContainerControl3.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2ContainerControl3.BorderRadius = 15;
-            this.guna2ContainerControl3.Controls.Add(this.mainPanel);
-            this.guna2ContainerControl3.FillColor = System.Drawing.SystemColors.ControlLight;
-            this.guna2ContainerControl3.Location = new System.Drawing.Point(217, 87);
-            this.guna2ContainerControl3.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2ContainerControl3.Name = "guna2ContainerControl3";
-            this.guna2ContainerControl3.Size = new System.Drawing.Size(1689, 907);
-            this.guna2ContainerControl3.TabIndex = 2;
-            this.guna2ContainerControl3.Text = "guna2ContainerControl3";
+            this.ContenedorCentral.BackColor = System.Drawing.Color.Transparent;
+            this.ContenedorCentral.BorderColor = System.Drawing.Color.Transparent;
+            this.ContenedorCentral.BorderRadius = 15;
+            this.ContenedorCentral.Controls.Add(this.mainPanel);
+            this.ContenedorCentral.FillColor = System.Drawing.SystemColors.ControlLight;
+            this.ContenedorCentral.Location = new System.Drawing.Point(217, 87);
+            this.ContenedorCentral.Margin = new System.Windows.Forms.Padding(2);
+            this.ContenedorCentral.Name = "ContenedorCentral";
+            this.ContenedorCentral.Size = new System.Drawing.Size(1689, 907);
+            this.ContenedorCentral.TabIndex = 2;
+            this.ContenedorCentral.Text = "guna2ContainerControl3";
             // 
             // mainPanel
             // 
@@ -320,25 +328,26 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.guna2ContainerControl3);
-            this.Controls.Add(this.guna2ContainerControl2);
-            this.Controls.Add(this.guna2ContainerControl1);
+            this.Controls.Add(this.ContenedorCentral);
+            this.Controls.Add(this.ContenedorLateral);
+            this.Controls.Add(this.ContenedorSuperior);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
-            this.guna2ContainerControl1.ResumeLayout(false);
-            this.guna2ContainerControl1.PerformLayout();
-            this.guna2ContainerControl2.ResumeLayout(false);
-            this.guna2ContainerControl3.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.Menu_Load);
+            this.ContenedorSuperior.ResumeLayout(false);
+            this.ContenedorSuperior.PerformLayout();
+            this.ContenedorLateral.ResumeLayout(false);
+            this.ContenedorCentral.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2ContainerControl guna2ContainerControl1;
-        private Guna.UI2.WinForms.Guna2ContainerControl guna2ContainerControl2;
+        private Guna.UI2.WinForms.Guna2ContainerControl ContenedorSuperior;
+        private Guna.UI2.WinForms.Guna2ContainerControl ContenedorLateral;
         private Guna.UI2.WinForms.Guna2Button btnInicio;
         private Guna.UI2.WinForms.Guna2Button btnClientes;
         private Guna.UI2.WinForms.Guna2Button btnIngresos;
@@ -347,7 +356,7 @@
         private Guna.UI2.WinForms.Guna2Button btnRutinas;
         private Guna.UI2.WinForms.Guna2Button btnFinance;
         private Guna.UI2.WinForms.Guna2Button btnCalendario;
-        private Guna.UI2.WinForms.Guna2ContainerControl guna2ContainerControl3;
+        private Guna.UI2.WinForms.Guna2ContainerControl ContenedorCentral;
         private Guna.UI2.WinForms.Guna2Button btnConfig;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Panel mainPanel;
