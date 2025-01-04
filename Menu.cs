@@ -50,8 +50,8 @@ namespace System_Fitness
         private void btnFinance_Click(object sender, EventArgs e)
         {
             // Cargar UserControl de finanzas
-            Finanzas financeControl = new Finanzas();
-            CargarUserControl(financeControl);
+            FinanzasUserControl FinanzasUserControl = new FinanzasUserControl();
+            CargarUserControl(FinanzasUserControl);
         }
 
         private void btnCalendario_Click(object sender, EventArgs e)
