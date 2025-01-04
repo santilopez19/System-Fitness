@@ -77,7 +77,7 @@ namespace System_Fitness
 
         public int ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = GetConnection()) // Usa el método GetConnection
             {
                 try
                 {
@@ -97,6 +97,7 @@ namespace System_Fitness
                 }
             }
         }
+
         public DataTable GetDataTable(string query, SqlParameter[] parameters = null)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -124,6 +125,22 @@ namespace System_Fitness
                 }
             }
         }
+        public int InsertarPago(int clienteId, DateTime fechaPago, decimal monto, string metodoPago, string dni)
+        {
+            string query = "INSERT INTO Pagos (ClienteID, FechaPago, Monto, MetodoPago, DNI) " +
+                           "VALUES (@ClienteID, @FechaPago, @Monto, @MetodoPago, @DNI);";
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+        new SqlParameter("@ClienteID", clienteId),
+        new SqlParameter("@FechaPago", fechaPago),
+        new SqlParameter("@Monto", monto),
+        new SqlParameter("@MetodoPago", metodoPago),
+        new SqlParameter("@DNI", dni)
+            };
+
+            return ExecuteNonQuery(query, parameters);
+        }
 
 
 
@@ -137,5 +154,30 @@ namespace System_Fitness
                 return BitConverter.ToString(bytes).Replace("-", "").ToLower();
             }
         }
+        public object ExecuteScalar(string query, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        if (parameters != null)
+                        {
+                            command.Parameters.AddRange(parameters);
+                        }
+
+                        return command.ExecuteScalar();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error en ExecuteScalar: {ex.Message}");
+                    return null;
+                }
+            }
+        }
+
     }
 }
