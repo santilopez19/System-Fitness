@@ -133,6 +133,23 @@ namespace System_Fitness
                 }
             }
         }
+        public DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                if (parameters != null)
+                    command.Parameters.AddRange(parameters);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
         public DataTable GetDataTable(string query, SqlParameter[] parameters = null)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
