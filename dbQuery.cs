@@ -8,10 +8,12 @@ namespace System_Fitness
     internal class dbQuery
     {
         private static readonly string connectionString = "server=localhost; database=dbSystemFitness; integrated security=true; Encrypt=False;";
+
         public SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);
         }
+
         // Método genérico para ejecutar consultas de tipo INSERT, UPDATE o DELETE
         public int ExecuteNonQuery(string query, SqlParameter[] parameters = null, SqlTransaction transaction = null)
         {
@@ -44,14 +46,14 @@ namespace System_Fitness
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-        new SqlParameter("@Nombre", nombre),
-        new SqlParameter("@Apellido", apellido),
-        new SqlParameter("@DNI", dni),
-        new SqlParameter("@FechaNacimiento", fechaNacimiento),
-        new SqlParameter("@Sexo", sexo),
-        new SqlParameter("@Email", email),
-        new SqlParameter("@UsuarioWeb", usuarioWeb),
-        new SqlParameter("@ContraseñaWeb", HashPassword(contraseñaWeb))
+                new SqlParameter("@Nombre", nombre),
+                new SqlParameter("@Apellido", apellido),
+                new SqlParameter("@DNI", dni),
+                new SqlParameter("@FechaNacimiento", fechaNacimiento),
+                new SqlParameter("@Sexo", sexo),
+                new SqlParameter("@Email", email),
+                new SqlParameter("@UsuarioWeb", usuarioWeb),
+                new SqlParameter("@ContraseñaWeb", HashPassword(contraseñaWeb))
             };
 
             try
@@ -74,10 +76,42 @@ namespace System_Fitness
             }
         }
 
-
-        public int ExecuteQuery(string query, SqlParameter[] parameters = null)
+        public DataTable GetClases()
         {
-            using (SqlConnection connection = GetConnection()) // Usa el método GetConnection
+            string query = "SELECT ClaseID, NombreClase, Dia, HoraInicio, HoraFin, CupoMaximo, FechaClase FROM Clases";
+            return GetDataTable(query); // Ahora utiliza correctamente GetDataTable con un solo argumento
+        }
+
+        public int InsertarPago(int clienteId, DateTime fechaPago, decimal monto, string metodoPago, string dni)
+        {
+            string query = "INSERT INTO Pagos (ClienteID, FechaPago, Monto, MetodoPago, DNI) " +
+                           "VALUES (@ClienteID, @FechaPago, @Monto, @MetodoPago, @DNI);";
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ClienteID", clienteId),
+                new SqlParameter("@FechaPago", fechaPago),
+                new SqlParameter("@Monto", monto),
+                new SqlParameter("@MetodoPago", metodoPago),
+                new SqlParameter("@DNI", dni)
+            };
+
+            return ExecuteNonQuery(query, parameters);
+        }
+
+        // Método para encriptar contraseñas
+        private string HashPassword(string password)
+        {
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return BitConverter.ToString(bytes).Replace("-", "").ToLower();
+            }
+        }
+
+        public object ExecuteScalar(string query, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -85,19 +119,20 @@ namespace System_Fitness
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         if (parameters != null)
+                        {
                             command.Parameters.AddRange(parameters);
+                        }
 
-                        return command.ExecuteNonQuery(); // Devuelve el número de filas afectadas
+                        return command.ExecuteScalar();
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error al ejecutar la consulta: {ex.Message}");
-                    return -1;
+                    Console.WriteLine($"Error en ExecuteScalar: {ex.Message}");
+                    return null;
                 }
             }
         }
-
         public DataTable GetDataTable(string query, SqlParameter[] parameters = null)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -125,59 +160,5 @@ namespace System_Fitness
                 }
             }
         }
-        public int InsertarPago(int clienteId, DateTime fechaPago, decimal monto, string metodoPago, string dni)
-        {
-            string query = "INSERT INTO Pagos (ClienteID, FechaPago, Monto, MetodoPago, DNI) " +
-                           "VALUES (@ClienteID, @FechaPago, @Monto, @MetodoPago, @DNI);";
-
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-        new SqlParameter("@ClienteID", clienteId),
-        new SqlParameter("@FechaPago", fechaPago),
-        new SqlParameter("@Monto", monto),
-        new SqlParameter("@MetodoPago", metodoPago),
-        new SqlParameter("@DNI", dni)
-            };
-
-            return ExecuteNonQuery(query, parameters);
-        }
-
-
-
-        // Método para encriptar contraseñas
-        private string HashPassword(string password)
-        {
-            // Implementar hashing de contraseñas con SHA256 o bcrypt
-            using (var sha256 = System.Security.Cryptography.SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return BitConverter.ToString(bytes).Replace("-", "").ToLower();
-            }
-        }
-        public object ExecuteScalar(string query, SqlParameter[] parameters = null)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        if (parameters != null)
-                        {
-                            command.Parameters.AddRange(parameters);
-                        }
-
-                        return command.ExecuteScalar();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error en ExecuteScalar: {ex.Message}");
-                    return null;
-                }
-            }
-        }
-
     }
 }

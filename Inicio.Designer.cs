@@ -39,6 +39,7 @@
             this.lblMonto = new System.Windows.Forms.Label();
             this.txtMonto = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ContainerControl1 = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.label4 = new System.Windows.Forms.Label();
             this.dgvGastos = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
             this.btnModificar = new Guna.UI2.WinForms.Guna2Button();
@@ -56,7 +57,8 @@
             this.guna2ContainerControl3 = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.dgvProxClas = new Guna.UI2.WinForms.Guna2DataGridView();
             this.lblProximasClases = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btnAnterior = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSiguiente = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGastos)).BeginInit();
             this.guna2ContainerControl2.SuspendLayout();
@@ -99,7 +101,6 @@
             this.txtMonto.SelectedText = "";
             this.txtMonto.Size = new System.Drawing.Size(300, 56);
             this.txtMonto.TabIndex = 28;
-            this.txtMonto.TextChanged += new System.EventHandler(this.txtMonto_TextChanged);
             // 
             // guna2ContainerControl1
             // 
@@ -124,6 +125,18 @@
             this.guna2ContainerControl1.Size = new System.Drawing.Size(1614, 426);
             this.guna2ContainerControl1.TabIndex = 35;
             this.guna2ContainerControl1.Text = "guna2ContainerControl1";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(15, 10);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 30);
+            this.label4.TabIndex = 48;
+            this.label4.Text = "Gastos";
             // 
             // dgvGastos
             // 
@@ -191,8 +204,6 @@
             this.dgvGastos.ThemeStyle.RowsStyle.Height = 22;
             this.dgvGastos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvGastos.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvGastos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGastos_CellClick);
-            this.dgvGastos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGastos_CellClick);
             // 
             // btnEliminar
             // 
@@ -211,7 +222,6 @@
             this.btnEliminar.Size = new System.Drawing.Size(169, 60);
             this.btnEliminar.TabIndex = 45;
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
@@ -230,7 +240,6 @@
             this.btnModificar.Size = new System.Drawing.Size(169, 60);
             this.btnModificar.TabIndex = 44;
             this.btnModificar.Text = "Modificar";
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnCargarGasto
             // 
@@ -249,7 +258,6 @@
             this.btnCargarGasto.Size = new System.Drawing.Size(208, 60);
             this.btnCargarGasto.TabIndex = 43;
             this.btnCargarGasto.Text = "Cargar Gasto";
-            this.btnCargarGasto.Click += new System.EventHandler(this.btnCargarGasto_Click_1);
             // 
             // lblObservacion
             // 
@@ -286,7 +294,6 @@
             this.txtObservacion.SelectedText = "";
             this.txtObservacion.Size = new System.Drawing.Size(416, 56);
             this.txtObservacion.TabIndex = 41;
-            this.txtObservacion.TextChanged += new System.EventHandler(this.txtObservacion_TextChanged);
             // 
             // radiobuttonTransferencia
             // 
@@ -305,7 +312,6 @@
             this.radiobuttonTransferencia.UncheckedState.BorderThickness = 2;
             this.radiobuttonTransferencia.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.radiobuttonTransferencia.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.radiobuttonTransferencia.CheckedChanged += new System.EventHandler(this.guna2CustomRadioButton2_CheckedChanged);
             // 
             // radiobuttonEfectivo
             // 
@@ -324,7 +330,6 @@
             this.radiobuttonEfectivo.UncheckedState.BorderThickness = 2;
             this.radiobuttonEfectivo.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.radiobuttonEfectivo.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.radiobuttonEfectivo.CheckedChanged += new System.EventHandler(this.radiobuttonEfectivo_CheckedChanged);
             // 
             // label3
             // 
@@ -376,7 +381,6 @@
             this.cmbCategoriaGasto.Name = "cmbCategoriaGasto";
             this.cmbCategoriaGasto.Size = new System.Drawing.Size(224, 36);
             this.cmbCategoriaGasto.TabIndex = 35;
-            this.cmbCategoriaGasto.SelectedIndexChanged += new System.EventHandler(this.cmbCategoriaGasto_SelectedIndexChanged);
             // 
             // lblClientesActivos
             // 
@@ -404,6 +408,8 @@
             // guna2ContainerControl3
             // 
             this.guna2ContainerControl3.BorderRadius = 15;
+            this.guna2ContainerControl3.Controls.Add(this.btnSiguiente);
+            this.guna2ContainerControl3.Controls.Add(this.btnAnterior);
             this.guna2ContainerControl3.Controls.Add(this.dgvProxClas);
             this.guna2ContainerControl3.Controls.Add(this.lblProximasClases);
             this.guna2ContainerControl3.Location = new System.Drawing.Point(21, 102);
@@ -423,7 +429,7 @@
             this.dgvProxClas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
@@ -446,15 +452,16 @@
             this.dgvProxClas.Name = "dgvProxClas";
             this.dgvProxClas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.PaleTurquoise;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightCyan;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProxClas.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvProxClas.RowHeadersVisible = false;
             this.dgvProxClas.RowHeadersWidth = 40;
+            this.dgvProxClas.RowTemplate.Height = 35;
             this.dgvProxClas.Size = new System.Drawing.Size(1567, 233);
             this.dgvProxClas.TabIndex = 46;
             this.dgvProxClas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -475,7 +482,7 @@
             this.dgvProxClas.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvProxClas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvProxClas.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvProxClas.ThemeStyle.RowsStyle.Height = 22;
+            this.dgvProxClas.ThemeStyle.RowsStyle.Height = 35;
             this.dgvProxClas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvProxClas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
@@ -491,17 +498,43 @@
             this.lblProximasClases.TabIndex = 44;
             this.lblProximasClases.Text = "Proximas Clases";
             // 
-            // label4
+            // btnAnterior
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(15, 10);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 30);
-            this.label4.TabIndex = 48;
-            this.label4.Text = "Gastos";
+            this.btnAnterior.BackColor = System.Drawing.Color.Transparent;
+            this.btnAnterior.BorderRadius = 15;
+            this.btnAnterior.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAnterior.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAnterior.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAnterior.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAnterior.FillColor = System.Drawing.Color.PaleTurquoise;
+            this.btnAnterior.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnterior.ForeColor = System.Drawing.Color.Black;
+            this.btnAnterior.Location = new System.Drawing.Point(1326, 5);
+            this.btnAnterior.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(137, 37);
+            this.btnAnterior.TabIndex = 49;
+            this.btnAnterior.Text = "Anterior";
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click_1);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.BackColor = System.Drawing.Color.Transparent;
+            this.btnSiguiente.BorderRadius = 15;
+            this.btnSiguiente.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSiguiente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSiguiente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSiguiente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSiguiente.FillColor = System.Drawing.Color.PaleTurquoise;
+            this.btnSiguiente.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSiguiente.ForeColor = System.Drawing.Color.Black;
+            this.btnSiguiente.Location = new System.Drawing.Point(1473, 5);
+            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(137, 37);
+            this.btnSiguiente.TabIndex = 50;
+            this.btnSiguiente.Text = "Siguiente";
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click_1);
             // 
             // Inicio
             // 
@@ -513,7 +546,6 @@
             this.Controls.Add(this.guna2ContainerControl1);
             this.Name = "Inicio";
             this.Size = new System.Drawing.Size(1662, 881);
-            this.Load += new System.EventHandler(this.Inicio_Load);
             this.guna2ContainerControl1.ResumeLayout(false);
             this.guna2ContainerControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGastos)).EndInit();
@@ -548,5 +580,7 @@
         private Guna.UI2.WinForms.Guna2Button btnModificar;
         private Guna.UI2.WinForms.Guna2Button btnCargarGasto;
         private System.Windows.Forms.Label label4;
+        private Guna.UI2.WinForms.Guna2Button btnSiguiente;
+        private Guna.UI2.WinForms.Guna2Button btnAnterior;
     }
 }

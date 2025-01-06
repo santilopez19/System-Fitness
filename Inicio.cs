@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace System_Fitness
@@ -8,6 +9,8 @@ namespace System_Fitness
     public partial class Inicio : UserControl
     {
         private int gastoIdSeleccionado;
+
+        private DateTime currentDate;
 
         public Inicio()
         {
@@ -20,7 +23,167 @@ namespace System_Fitness
             CargarGastos();
             dgvProxClas.AllowUserToAddRows = false;
             dgvGastos.AllowUserToAddRows = false;
+            currentDate = DateTime.Now;
+            InitializeCalendar();
+            LoadClasesToGrid();
+
+            dgvProxClas.AllowUserToAddRows = false;
+
         }
+        private void InitializeCalendar()
+        {
+            // Establecer los días de la semana (lunes a viernes)
+            dgvProxClas.ColumnCount = 6;
+            dgvProxClas.RowCount = 12; // Horas disponibles (1 fila por cada hora)
+            dgvProxClas.Columns[0].Name = "Hora";
+
+            // Inicializar las horas de las clases en la primera columna
+            string[] horas = { "8:00", "9:00", "10:00", "11:00", "12:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00" };
+            for (int i = 0; i < horas.Length; i++)
+            {
+                dgvProxClas.Rows[i].Cells[0].Value = horas[i];
+            }
+
+            // Ajustar la visualización de los días (lunes a viernes)
+            UpdateCalendar();
+        }
+        private void UpdateCalendar()
+        {
+            // Calcular el primer día de la semana (lunes)
+            DateTime startOfWeek = currentDate.AddDays(-((int)currentDate.DayOfWeek - (int)DayOfWeek.Monday));
+
+            // Limpiar el DataGridView
+            for (int col = 1; col < 6; col++)
+            {
+                dgvProxClas.Columns[col].HeaderText = $"{startOfWeek.AddDays(col - 1):dd/MM} - {startOfWeek.AddDays(col - 1).ToString("dddd", new CultureInfo("es-ES"))}";
+            }
+
+            // Si quieres cambiar los días para que cambien cuando se avance o retroceda de semana:
+            for (int col = 1; col <= 5; col++)
+            {
+                dgvProxClas.Columns[col].HeaderText = $"{startOfWeek.AddDays(col - 1):dd/MM} - {startOfWeek.AddDays(col - 1).ToString("dddd", new CultureInfo("es-ES"))}";
+            }
+        }
+        private int GetRowForHour(TimeSpan hora)
+        {
+            string[] horas = { "8:00", "9:00", "10:00", "11:00", "12:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00" };
+            for (int i = 0; i < horas.Length; i++)
+            {
+                if (hora == TimeSpan.Parse(horas[i]))
+                {
+                    return i;  // Regresa la fila correspondiente a la hora
+                }
+            }
+            return -1; // Si no se encuentra, retornar -1
+        }
+
+        private void LoadClasesToGrid()
+        {
+            dbQuery db = new dbQuery();
+
+            // Calcular el primer día de la semana (lunes) basado en la fecha actual
+            DateTime startOfWeek = currentDate.AddDays(-((int)currentDate.DayOfWeek - (int)DayOfWeek.Monday));
+
+            for (int col = 1; col <= 5; col++)  // Llenamos columnas de lunes a viernes
+            {
+                DateTime diaSemana = startOfWeek.AddDays(col - 1);
+                string query = @"
+SELECT c.NombreClase, c.HoraInicio, c.HoraFin, c.CupoMaximo, c.FechaClase, 
+       COUNT(i.InscripcionID) AS CuposOcupados 
+FROM Clases c 
+LEFT JOIN Inscripciones i ON c.ClaseID = i.ClaseID 
+WHERE c.FechaClase = @FechaClase 
+GROUP BY c.NombreClase, c.HoraInicio, c.HoraFin, c.CupoMaximo, c.FechaClase";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@FechaClase", diaSemana.Date)
+                };
+
+                DataTable dtClases = db.GetDataTable(query, parameters);
+
+                // Limpiar las celdas de clases para el día actual
+                for (int row = 0; row < dgvProxClas.RowCount; row++)
+                {
+                    dgvProxClas.Rows[row].Cells[col].Value = null; // Limpiar valores previos
+                }
+
+                // Si no hay clases, mostrar mensaje de depuración
+                if (dtClases == null || dtClases.Rows.Count == 0)
+                {
+                    Console.WriteLine($"No se encontraron clases para: {diaSemana.ToString("dd/MM/yyyy")}");
+                }
+                else
+                {
+                    // Llenar el DataGridView con las clases para el día actual
+                    foreach (DataRow row in dtClases.Rows)
+                    {
+                        string nombreClase = row["NombreClase"].ToString();
+                        int cupoMaximo = Convert.ToInt32(row["CupoMaximo"]);
+                        int cuposOcupados = Convert.ToInt32(row["CuposOcupados"]);
+
+                        // Mostrar solo el nombre de la clase y los cupos ocupados en el formato adecuado
+                        string claseInfo = $"{nombreClase} ({cuposOcupados}/{cupoMaximo})";  // Formato requerido
+
+                        // Agregar la clase en la celda correspondiente
+                        dgvProxClas.Rows[GetRowForHour((TimeSpan)row["HoraInicio"])].Cells[col].Value = claseInfo;
+                    }
+                }
+            }
+        }
+    
+
+
+
+        private void btnAnterior_Click_1(object sender, EventArgs e)
+        {
+
+            // Retroceder una semana
+            currentDate = currentDate.AddDays(-7);
+            UpdateCalendar();  // Actualiza los días de la grilla
+            LoadClasesToGrid();  // Carga las clases para la nueva semana
+        }
+
+        private void btnSiguiente_Click_1(object sender, EventArgs e)
+        {
+
+            // Avanzar una semana
+            currentDate = currentDate.AddDays(7);
+            UpdateCalendar();  // Actualiza los días de la grilla
+            LoadClasesToGrid();  // Carga las clases para la nueva semana
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void LimpiarCampos()
         {
@@ -298,5 +461,6 @@ namespace System_Fitness
         {
 
         }
+
     }
 }
