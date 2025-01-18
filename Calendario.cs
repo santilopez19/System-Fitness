@@ -175,7 +175,6 @@ namespace System_Fitness
                 LoadClasesToGrid(); // Asegúrate de que esta línea se ejecute
 
 
-                MessageBox.Show("Clase creada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

@@ -55,10 +55,10 @@
             this.lblClientesActivos = new System.Windows.Forms.Label();
             this.guna2ContainerControl2 = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.guna2ContainerControl3 = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.btnSiguiente = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAnterior = new Guna.UI2.WinForms.Guna2Button();
             this.dgvProxClas = new Guna.UI2.WinForms.Guna2DataGridView();
             this.lblProximasClases = new System.Windows.Forms.Label();
-            this.btnAnterior = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSiguiente = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGastos)).BeginInit();
             this.guna2ContainerControl2.SuspendLayout();
@@ -393,6 +393,7 @@
             this.lblClientesActivos.Size = new System.Drawing.Size(167, 30);
             this.lblClientesActivos.TabIndex = 43;
             this.lblClientesActivos.Text = "Clientes activos: ";
+            this.lblClientesActivos.Click += new System.EventHandler(this.lblClientesActivos_Click);
             // 
             // guna2ContainerControl2
             // 
@@ -418,16 +419,55 @@
             this.guna2ContainerControl3.TabIndex = 45;
             this.guna2ContainerControl3.Text = "guna2ContainerControl3";
             // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.BackColor = System.Drawing.Color.Transparent;
+            this.btnSiguiente.BorderRadius = 15;
+            this.btnSiguiente.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSiguiente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSiguiente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSiguiente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSiguiente.FillColor = System.Drawing.Color.PaleTurquoise;
+            this.btnSiguiente.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSiguiente.ForeColor = System.Drawing.Color.Black;
+            this.btnSiguiente.Location = new System.Drawing.Point(1473, 5);
+            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(137, 37);
+            this.btnSiguiente.TabIndex = 50;
+            this.btnSiguiente.Text = "Siguiente";
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click_1);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.BackColor = System.Drawing.Color.Transparent;
+            this.btnAnterior.BorderRadius = 15;
+            this.btnAnterior.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAnterior.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAnterior.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAnterior.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAnterior.FillColor = System.Drawing.Color.PaleTurquoise;
+            this.btnAnterior.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnterior.ForeColor = System.Drawing.Color.Black;
+            this.btnAnterior.Location = new System.Drawing.Point(1326, 5);
+            this.btnAnterior.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(137, 37);
+            this.btnAnterior.TabIndex = 49;
+            this.btnAnterior.Text = "Anterior";
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click_1);
+            // 
             // dgvProxClas
             // 
             this.dgvProxClas.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightCyan;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvProxClas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
@@ -437,7 +477,7 @@
             this.dgvProxClas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProxClas.ColumnHeadersHeight = 30;
             this.dgvProxClas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
@@ -451,7 +491,7 @@
             this.dgvProxClas.Margin = new System.Windows.Forms.Padding(5);
             this.dgvProxClas.Name = "dgvProxClas";
             this.dgvProxClas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.PaleTurquoise;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -497,44 +537,6 @@
             this.lblProximasClases.Size = new System.Drawing.Size(161, 30);
             this.lblProximasClases.TabIndex = 44;
             this.lblProximasClases.Text = "Proximas Clases";
-            // 
-            // btnAnterior
-            // 
-            this.btnAnterior.BackColor = System.Drawing.Color.Transparent;
-            this.btnAnterior.BorderRadius = 15;
-            this.btnAnterior.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAnterior.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAnterior.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAnterior.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAnterior.FillColor = System.Drawing.Color.PaleTurquoise;
-            this.btnAnterior.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnterior.ForeColor = System.Drawing.Color.Black;
-            this.btnAnterior.Location = new System.Drawing.Point(1326, 5);
-            this.btnAnterior.Margin = new System.Windows.Forms.Padding(5);
-            this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(137, 37);
-            this.btnAnterior.TabIndex = 49;
-            this.btnAnterior.Text = "Anterior";
-            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click_1);
-            // 
-            // btnSiguiente
-            // 
-            this.btnSiguiente.BackColor = System.Drawing.Color.Transparent;
-            this.btnSiguiente.BorderRadius = 15;
-            this.btnSiguiente.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSiguiente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSiguiente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSiguiente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSiguiente.FillColor = System.Drawing.Color.PaleTurquoise;
-            this.btnSiguiente.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSiguiente.ForeColor = System.Drawing.Color.Black;
-            this.btnSiguiente.Location = new System.Drawing.Point(1473, 5);
-            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(137, 37);
-            this.btnSiguiente.TabIndex = 50;
-            this.btnSiguiente.Text = "Siguiente";
-            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click_1);
             // 
             // Inicio
             // 
