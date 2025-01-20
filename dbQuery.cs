@@ -177,5 +177,25 @@ namespace System_Fitness
                 }
             }
         }
+
+        public string ObtenerNombreClientePorDni(string dni)
+        {
+            string query = "SELECT Nombre FROM Clientes WHERE DNI = @DNI";
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@DNI", dni)
+            };
+
+            DataTable dt = ExecuteQuery(query, parameters);
+
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["Nombre"].ToString(); // Devuelve el nombre si lo encuentra
+            }
+
+            return null; // Devuelve null si no encuentra el cliente
+        }
+
     }
 }

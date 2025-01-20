@@ -28,69 +28,74 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTipoClase = new System.Windows.Forms.Label();
-            this.btnCrear = new Guna.UI2.WinForms.Guna2Button();
-            this.txtCupo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.components = new System.ComponentModel.Container();
+            this.lblNombreCliente = new System.Windows.Forms.Label();
+            this.btnIngresar = new Guna.UI2.WinForms.Guna2Button();
+            this.txtDNIingreso = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblTipoClase
+            // lblNombreCliente
             // 
-            this.lblTipoClase.AutoSize = true;
-            this.lblTipoClase.BackColor = System.Drawing.Color.Transparent;
-            this.lblTipoClase.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoClase.Location = new System.Drawing.Point(486, 622);
-            this.lblTipoClase.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblTipoClase.Name = "lblTipoClase";
-            this.lblTipoClase.Size = new System.Drawing.Size(144, 30);
-            this.lblTipoClase.TabIndex = 42;
-            this.lblTipoClase.Text = "\"lbl INGRESO\"";
+            this.lblNombreCliente.AutoSize = true;
+            this.lblNombreCliente.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombreCliente.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCliente.Location = new System.Drawing.Point(486, 622);
+            this.lblNombreCliente.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblNombreCliente.Name = "lblNombreCliente";
+            this.lblNombreCliente.Size = new System.Drawing.Size(144, 30);
+            this.lblNombreCliente.TabIndex = 42;
+            this.lblNombreCliente.Text = "\"lbl INGRESO\"";
+            this.lblNombreCliente.Click += new System.EventHandler(this.lblTipoClase_Click);
             // 
-            // btnCrear
+            // btnIngresar
             // 
-            this.btnCrear.BackColor = System.Drawing.Color.Transparent;
-            this.btnCrear.BorderRadius = 15;
-            this.btnCrear.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCrear.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCrear.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCrear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCrear.FillColor = System.Drawing.Color.LightGreen;
-            this.btnCrear.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrear.ForeColor = System.Drawing.Color.Black;
-            this.btnCrear.Location = new System.Drawing.Point(486, 525);
-            this.btnCrear.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(169, 60);
-            this.btnCrear.TabIndex = 41;
-            this.btnCrear.Text = "Ingresar";
+            this.btnIngresar.BackColor = System.Drawing.Color.Transparent;
+            this.btnIngresar.BorderRadius = 15;
+            this.btnIngresar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnIngresar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnIngresar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnIngresar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnIngresar.FillColor = System.Drawing.Color.LightGreen;
+            this.btnIngresar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresar.ForeColor = System.Drawing.Color.Black;
+            this.btnIngresar.Location = new System.Drawing.Point(486, 525);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(5);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(169, 60);
+            this.btnIngresar.TabIndex = 41;
+            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.Click += new System.EventHandler(this.btnCrear_Click);
             // 
-            // txtCupo
+            // txtDNIingreso
             // 
-            this.txtCupo.BackColor = System.Drawing.Color.Transparent;
-            this.txtCupo.BorderRadius = 15;
-            this.txtCupo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCupo.DefaultText = "";
-            this.txtCupo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCupo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCupo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCupo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCupo.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.txtCupo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCupo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCupo.ForeColor = System.Drawing.Color.Black;
-            this.txtCupo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCupo.Location = new System.Drawing.Point(486, 423);
-            this.txtCupo.Margin = new System.Windows.Forms.Padding(5);
-            this.txtCupo.Name = "txtCupo";
-            this.txtCupo.PasswordChar = '\0';
-            this.txtCupo.PlaceholderText = "";
-            this.txtCupo.SelectedText = "";
-            this.txtCupo.Size = new System.Drawing.Size(284, 56);
-            this.txtCupo.TabIndex = 40;
-            this.txtCupo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDNIingreso.BackColor = System.Drawing.Color.Transparent;
+            this.txtDNIingreso.BorderRadius = 15;
+            this.txtDNIingreso.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDNIingreso.DefaultText = "";
+            this.txtDNIingreso.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDNIingreso.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDNIingreso.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDNIingreso.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDNIingreso.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.txtDNIingreso.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDNIingreso.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDNIingreso.ForeColor = System.Drawing.Color.Black;
+            this.txtDNIingreso.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDNIingreso.Location = new System.Drawing.Point(486, 423);
+            this.txtDNIingreso.Margin = new System.Windows.Forms.Padding(5);
+            this.txtDNIingreso.Name = "txtDNIingreso";
+            this.txtDNIingreso.PasswordChar = '\0';
+            this.txtDNIingreso.PlaceholderText = "";
+            this.txtDNIingreso.SelectedText = "";
+            this.txtDNIingreso.Size = new System.Drawing.Size(284, 56);
+            this.txtDNIingreso.TabIndex = 40;
+            this.txtDNIingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDNIingreso.TextChanged += new System.EventHandler(this.txtCupo_TextChanged);
             // 
             // label1
             // 
@@ -122,13 +127,14 @@
             // 
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.lblTipoClase, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnCrear, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.txtCupo, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblNombreCliente, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnIngresar, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtDNIingreso, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Default;
@@ -167,11 +173,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblTipoClase;
-        private Guna.UI2.WinForms.Guna2Button btnCrear;
-        private Guna.UI2.WinForms.Guna2TextBox txtCupo;
+        private System.Windows.Forms.Label lblNombreCliente;
+        private Guna.UI2.WinForms.Guna2Button btnIngresar;
+        private Guna.UI2.WinForms.Guna2TextBox txtDNIingreso;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Timer timer;
     }
 }

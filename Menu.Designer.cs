@@ -35,7 +35,6 @@
             this.btnIngresos = new Guna.UI2.WinForms.Guna2Button();
             this.btnEstadistica = new Guna.UI2.WinForms.Guna2Button();
             this.btnpagos = new Guna.UI2.WinForms.Guna2Button();
-            this.btnRutinas = new Guna.UI2.WinForms.Guna2Button();
             this.btnFinance = new Guna.UI2.WinForms.Guna2Button();
             this.btnCalendario = new Guna.UI2.WinForms.Guna2Button();
             this.btnClientes = new Guna.UI2.WinForms.Guna2Button();
@@ -81,7 +80,6 @@
             this.ContenedorLateral.Controls.Add(this.btnIngresos);
             this.ContenedorLateral.Controls.Add(this.btnEstadistica);
             this.ContenedorLateral.Controls.Add(this.btnpagos);
-            this.ContenedorLateral.Controls.Add(this.btnRutinas);
             this.ContenedorLateral.Controls.Add(this.btnFinance);
             this.ContenedorLateral.Controls.Add(this.btnCalendario);
             this.ContenedorLateral.Controls.Add(this.btnClientes);
@@ -157,7 +155,7 @@
             this.btnEstadistica.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEstadistica.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnEstadistica.IndicateFocus = true;
-            this.btnEstadistica.Location = new System.Drawing.Point(15, 428);
+            this.btnEstadistica.Location = new System.Drawing.Point(15, 369);
             this.btnEstadistica.Margin = new System.Windows.Forms.Padding(2);
             this.btnEstadistica.Name = "btnEstadistica";
             this.btnEstadistica.PressedColor = System.Drawing.Color.Transparent;
@@ -192,31 +190,6 @@
             this.btnpagos.UseTransparentBackground = true;
             this.btnpagos.Click += new System.EventHandler(this.btnpagos_Click);
             // 
-            // btnRutinas
-            // 
-            this.btnRutinas.Animated = true;
-            this.btnRutinas.BackColor = System.Drawing.Color.Transparent;
-            this.btnRutinas.BorderRadius = 15;
-            this.btnRutinas.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-            this.btnRutinas.DisabledState.BorderColor = System.Drawing.Color.Transparent;
-            this.btnRutinas.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.btnRutinas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnRutinas.DisabledState.ForeColor = System.Drawing.Color.White;
-            this.btnRutinas.FillColor = System.Drawing.Color.LightCyan;
-            this.btnRutinas.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnRutinas.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRutinas.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.btnRutinas.IndicateFocus = true;
-            this.btnRutinas.Location = new System.Drawing.Point(15, 251);
-            this.btnRutinas.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRutinas.Name = "btnRutinas";
-            this.btnRutinas.PressedColor = System.Drawing.Color.Transparent;
-            this.btnRutinas.Size = new System.Drawing.Size(161, 46);
-            this.btnRutinas.TabIndex = 4;
-            this.btnRutinas.Text = "Rutinas";
-            this.btnRutinas.UseTransparentBackground = true;
-            this.btnRutinas.Click += new System.EventHandler(this.btnRutinas_Click);
-            // 
             // btnFinance
             // 
             this.btnFinance.Animated = true;
@@ -232,7 +205,7 @@
             this.btnFinance.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinance.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnFinance.IndicateFocus = true;
-            this.btnFinance.Location = new System.Drawing.Point(15, 369);
+            this.btnFinance.Location = new System.Drawing.Point(15, 310);
             this.btnFinance.Margin = new System.Windows.Forms.Padding(2);
             this.btnFinance.Name = "btnFinance";
             this.btnFinance.PressedColor = System.Drawing.Color.Transparent;
@@ -257,7 +230,7 @@
             this.btnCalendario.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalendario.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnCalendario.IndicateFocus = true;
-            this.btnCalendario.Location = new System.Drawing.Point(15, 310);
+            this.btnCalendario.Location = new System.Drawing.Point(15, 251);
             this.btnCalendario.Margin = new System.Windows.Forms.Padding(2);
             this.btnCalendario.Name = "btnCalendario";
             this.btnCalendario.PressedColor = System.Drawing.Color.Transparent;
@@ -369,7 +342,6 @@
         private Guna.UI2.WinForms.Guna2Button btnIngresos;
         private Guna.UI2.WinForms.Guna2Button btnEstadistica;
         private Guna.UI2.WinForms.Guna2Button btnpagos;
-        private Guna.UI2.WinForms.Guna2Button btnRutinas;
         private Guna.UI2.WinForms.Guna2Button btnFinance;
         private Guna.UI2.WinForms.Guna2Button btnCalendario;
         private Guna.UI2.WinForms.Guna2ContainerControl ContenedorCentral;

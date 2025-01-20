@@ -261,12 +261,6 @@
     <Compile Include="frmIngresos.Designer.cs">
       <DependentUpon>frmIngresos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ingresos.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Ingresos.Designer.cs">
-      <DependentUpon>Ingresos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -307,9 +301,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmIngresos.resx">
       <DependentUpon>frmIngresos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Ingresos.resx">
-      <DependentUpon>Ingresos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>

@@ -162,50 +162,6 @@ namespace System_Fitness
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private void LimpiarCampos()
-        {
-            cmbCategoriaGasto.SelectedIndex = -1;
-            txtMonto.Clear();
-            txtObservacion.Clear();
-            radiobuttonEfectivo.Checked = false;
-            radiobuttonTransferencia.Checked = false;
-        }
-
-        private void cmbCategoriaGasto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void guna2CustomRadioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txtMonto_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void radiobuttonEfectivo_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void Inicio_Load(object sender, EventArgs e)
-        {
-        }
         private void CargarClientesActivos()
         {
             try
@@ -238,51 +194,34 @@ namespace System_Fitness
         }
 
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void LimpiarCampos()
         {
-            try
-            {
-                // Verificamos si se ha seleccionado un gasto
-                if (gastoIdSeleccionado == 0)
-                {
-                    MessageBox.Show("Por favor, seleccione un gasto para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Preguntamos al usuario si está seguro de eliminar el gasto
-                DialogResult result = MessageBox.Show("¿Está seguro de eliminar este gasto?", "Confirmar", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    // Consulta SQL para eliminar el gasto
-                    string query = "DELETE FROM Gastos WHERE GastoID = @GastoID";
-
-                    // Creamos los parámetros para la consulta
-                    SqlParameter[] parameters = new SqlParameter[]
-                    {
-                new SqlParameter("@GastoID", gastoIdSeleccionado)
-                    };
-
-                    // Ejecutamos la consulta
-                    dbQuery db = new dbQuery();
-                    int rowsAffected = db.ExecuteNonQuery(query, parameters);
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Gasto eliminado con éxito.");
-                        CargarGastos(); // Recargamos los gastos en la grilla
-                        LimpiarCampos(); // Limpiamos los campos
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error al eliminar el gasto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al eliminar el gasto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            cmbCategoriaGasto.SelectedIndex = -1;
+            txtMonto.Clear();
+            txtObservacion.Clear();
+            radiobuttonEfectivo.Checked = false;
+            radiobuttonTransferencia.Checked = false;
         }
-
 
 
 
@@ -314,55 +253,6 @@ namespace System_Fitness
         }
 
 
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Verificamos si se ha seleccionado un gasto
-                if (gastoIdSeleccionado == 0)
-                {
-                    MessageBox.Show("Por favor, seleccione un gasto para modificar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                string categoria = cmbCategoriaGasto.SelectedItem.ToString();
-                decimal monto = Convert.ToDecimal(txtMonto.Text);
-                string metodoPago = radiobuttonEfectivo.Checked ? "Efectivo" : "Transferencia";
-                string observacion = txtObservacion.Text;
-
-                // Consulta SQL para modificar el gasto
-                string query = "UPDATE Gastos SET Categoria = @Categoria, Monto = @Monto, MetodoPago = @MetodoPago, Observacion = @Observacion WHERE GastoID = @GastoID";
-
-                // Creamos los parámetros para la consulta
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-            new SqlParameter("@GastoID", gastoIdSeleccionado),
-            new SqlParameter("@Categoria", categoria),
-            new SqlParameter("@Monto", monto),
-            new SqlParameter("@MetodoPago", metodoPago),
-            new SqlParameter("@Observacion", observacion)
-                };
-
-                // Ejecutamos la consulta
-                dbQuery db = new dbQuery();
-                int result = db.ExecuteNonQuery(query, parameters);
-                if (result > 0)
-                {
-                    MessageBox.Show("Gasto modificado con éxito.");
-                    CargarGastos(); // Recargamos los gastos en la grilla
-                    LimpiarCampos(); // Limpiamos los campos
-                }
-                else
-                {
-                    MessageBox.Show("Hubo un error al modificar el gasto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al modificar el gasto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void CargarGastos()
         {
@@ -452,14 +342,99 @@ namespace System_Fitness
             }
         }
 
-        private void txtObservacion_TextChanged(object sender, EventArgs e)
+        private void btnModificar_Click_1(object sender, EventArgs e)
         {
+            try
+            {
+                // Verificamos si se ha seleccionado un gasto
+                if (gastoIdSeleccionado == 0)
+                {
+                    MessageBox.Show("Por favor, seleccione un gasto para modificar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string categoria = cmbCategoriaGasto.SelectedItem.ToString();
+                decimal monto = Convert.ToDecimal(txtMonto.Text);
+                string metodoPago = radiobuttonEfectivo.Checked ? "Efectivo" : "Transferencia";
+                string observacion = txtObservacion.Text;
+
+                // Consulta SQL para modificar el gasto
+                string query = "UPDATE Gastos SET Categoria = @Categoria, Monto = @Monto, MetodoPago = @MetodoPago, Observacion = @Observacion WHERE GastoID = @GastoID";
+
+                // Creamos los parámetros para la consulta
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@GastoID", gastoIdSeleccionado),
+            new SqlParameter("@Categoria", categoria),
+            new SqlParameter("@Monto", monto),
+            new SqlParameter("@MetodoPago", metodoPago),
+            new SqlParameter("@Observacion", observacion)
+                };
+
+                // Ejecutamos la consulta
+                dbQuery db = new dbQuery();
+                int result = db.ExecuteNonQuery(query, parameters);
+                if (result > 0)
+                {
+                    MessageBox.Show("Gasto modificado con éxito.");
+                    CargarGastos(); // Recargamos los gastos en la grilla
+                    LimpiarCampos(); // Limpiamos los campos
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un error al modificar el gasto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al modificar el gasto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
-        private void lblClientesActivos_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
+            try
+            {
+                // Verificamos si se ha seleccionado un gasto
+                if (gastoIdSeleccionado == 0)
+                {
+                    MessageBox.Show("Por favor, seleccione un gasto para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                // Preguntamos al usuario si está seguro de eliminar el gasto
+                DialogResult result = MessageBox.Show("¿Está seguro de eliminar este gasto?", "Confirmar", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    // Consulta SQL para eliminar el gasto
+                    string query = "DELETE FROM Gastos WHERE GastoID = @GastoID";
+
+                    // Creamos los parámetros para la consulta
+                    SqlParameter[] parameters = new SqlParameter[]
+                    {
+                new SqlParameter("@GastoID", gastoIdSeleccionado)
+                    };
+
+                    // Ejecutamos la consulta
+                    dbQuery db = new dbQuery();
+                    int rowsAffected = db.ExecuteNonQuery(query, parameters);
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Gasto eliminado con éxito.");
+                        CargarGastos(); // Recargamos los gastos en la grilla
+                        LimpiarCampos(); // Limpiamos los campos
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al eliminar el gasto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar el gasto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
