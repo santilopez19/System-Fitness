@@ -70,9 +70,8 @@ namespace System_Fitness
 
         private void btnIngresos_Click(object sender, EventArgs e)
         {
-            // Cargar UserControl de ingresos
-            Ingresos ingresosControl = new Ingresos();
-            CargarUserControl(ingresosControl);
+            frmIngresos frmIngresos = new frmIngresos();
+            frmIngresos.ShowDialog();
         }
 
         private void btnConfig_Click(object sender, EventArgs e)

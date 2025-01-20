@@ -132,7 +132,7 @@
             this.btnIngresos.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresos.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnIngresos.IndicateFocus = true;
-            this.btnIngresos.Location = new System.Drawing.Point(15, 428);
+            this.btnIngresos.Location = new System.Drawing.Point(15, 74);
             this.btnIngresos.Margin = new System.Windows.Forms.Padding(2);
             this.btnIngresos.Name = "btnIngresos";
             this.btnIngresos.PressedColor = System.Drawing.Color.Transparent;
@@ -157,7 +157,7 @@
             this.btnEstadistica.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEstadistica.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnEstadistica.IndicateFocus = true;
-            this.btnEstadistica.Location = new System.Drawing.Point(15, 369);
+            this.btnEstadistica.Location = new System.Drawing.Point(15, 428);
             this.btnEstadistica.Margin = new System.Windows.Forms.Padding(2);
             this.btnEstadistica.Name = "btnEstadistica";
             this.btnEstadistica.PressedColor = System.Drawing.Color.Transparent;
@@ -182,7 +182,7 @@
             this.btnpagos.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnpagos.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnpagos.IndicateFocus = true;
-            this.btnpagos.Location = new System.Drawing.Point(15, 132);
+            this.btnpagos.Location = new System.Drawing.Point(15, 192);
             this.btnpagos.Margin = new System.Windows.Forms.Padding(2);
             this.btnpagos.Name = "btnpagos";
             this.btnpagos.PressedColor = System.Drawing.Color.Transparent;
@@ -207,7 +207,7 @@
             this.btnRutinas.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRutinas.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnRutinas.IndicateFocus = true;
-            this.btnRutinas.Location = new System.Drawing.Point(15, 192);
+            this.btnRutinas.Location = new System.Drawing.Point(15, 251);
             this.btnRutinas.Margin = new System.Windows.Forms.Padding(2);
             this.btnRutinas.Name = "btnRutinas";
             this.btnRutinas.PressedColor = System.Drawing.Color.Transparent;
@@ -232,7 +232,7 @@
             this.btnFinance.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinance.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnFinance.IndicateFocus = true;
-            this.btnFinance.Location = new System.Drawing.Point(15, 250);
+            this.btnFinance.Location = new System.Drawing.Point(15, 369);
             this.btnFinance.Margin = new System.Windows.Forms.Padding(2);
             this.btnFinance.Name = "btnFinance";
             this.btnFinance.PressedColor = System.Drawing.Color.Transparent;
@@ -282,7 +282,7 @@
             this.btnClientes.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClientes.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnClientes.IndicateFocus = true;
-            this.btnClientes.Location = new System.Drawing.Point(15, 74);
+            this.btnClientes.Location = new System.Drawing.Point(15, 133);
             this.btnClientes.Margin = new System.Windows.Forms.Padding(2);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.PressedColor = System.Drawing.Color.Transparent;
