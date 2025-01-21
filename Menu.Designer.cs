@@ -31,6 +31,7 @@
             this.ContenedorSuperior = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.lblNombre = new System.Windows.Forms.Label();
             this.ContenedorLateral = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.btnRecordatorios = new Guna.UI2.WinForms.Guna2Button();
             this.btnConfig = new Guna.UI2.WinForms.Guna2Button();
             this.btnIngresos = new Guna.UI2.WinForms.Guna2Button();
             this.btnpagos = new Guna.UI2.WinForms.Guna2Button();
@@ -40,7 +41,6 @@
             this.btnInicio = new Guna.UI2.WinForms.Guna2Button();
             this.ContenedorCentral = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.btnRecordatorios = new Guna.UI2.WinForms.Guna2Button();
             this.ContenedorSuperior.SuspendLayout();
             this.ContenedorLateral.SuspendLayout();
             this.ContenedorCentral.SuspendLayout();
@@ -91,6 +91,31 @@
             this.ContenedorLateral.Size = new System.Drawing.Size(188, 1059);
             this.ContenedorLateral.TabIndex = 2;
             this.ContenedorLateral.Text = "guna2ContainerControl2";
+            // 
+            // btnRecordatorios
+            // 
+            this.btnRecordatorios.Animated = true;
+            this.btnRecordatorios.BackColor = System.Drawing.Color.Transparent;
+            this.btnRecordatorios.BorderRadius = 15;
+            this.btnRecordatorios.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            this.btnRecordatorios.DisabledState.BorderColor = System.Drawing.Color.Transparent;
+            this.btnRecordatorios.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.btnRecordatorios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRecordatorios.DisabledState.ForeColor = System.Drawing.Color.White;
+            this.btnRecordatorios.FillColor = System.Drawing.Color.LightCyan;
+            this.btnRecordatorios.FocusedColor = System.Drawing.Color.Transparent;
+            this.btnRecordatorios.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecordatorios.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.btnRecordatorios.IndicateFocus = true;
+            this.btnRecordatorios.Location = new System.Drawing.Point(15, 369);
+            this.btnRecordatorios.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRecordatorios.Name = "btnRecordatorios";
+            this.btnRecordatorios.PressedColor = System.Drawing.Color.Transparent;
+            this.btnRecordatorios.Size = new System.Drawing.Size(161, 46);
+            this.btnRecordatorios.TabIndex = 9;
+            this.btnRecordatorios.Text = "Recordatorio";
+            this.btnRecordatorios.UseTransparentBackground = true;
+            this.btnRecordatorios.Click += new System.EventHandler(this.btnRecordatorios_Click);
             // 
             // btnConfig
             // 
@@ -285,30 +310,6 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1662, 881);
             this.mainPanel.TabIndex = 0;
-            // 
-            // btnRecordatorios
-            // 
-            this.btnRecordatorios.Animated = true;
-            this.btnRecordatorios.BackColor = System.Drawing.Color.Transparent;
-            this.btnRecordatorios.BorderRadius = 15;
-            this.btnRecordatorios.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-            this.btnRecordatorios.DisabledState.BorderColor = System.Drawing.Color.Transparent;
-            this.btnRecordatorios.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.btnRecordatorios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnRecordatorios.DisabledState.ForeColor = System.Drawing.Color.White;
-            this.btnRecordatorios.FillColor = System.Drawing.Color.LightCyan;
-            this.btnRecordatorios.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnRecordatorios.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecordatorios.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.btnRecordatorios.IndicateFocus = true;
-            this.btnRecordatorios.Location = new System.Drawing.Point(15, 369);
-            this.btnRecordatorios.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRecordatorios.Name = "btnRecordatorios";
-            this.btnRecordatorios.PressedColor = System.Drawing.Color.Transparent;
-            this.btnRecordatorios.Size = new System.Drawing.Size(161, 46);
-            this.btnRecordatorios.TabIndex = 9;
-            this.btnRecordatorios.Text = "Recordatorio";
-            this.btnRecordatorios.UseTransparentBackground = true;
             // 
             // Menu
             // 

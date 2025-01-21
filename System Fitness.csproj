@@ -281,6 +281,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recordatorio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Recordatorio.Designer.cs">
+      <DependentUpon>Recordatorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rutinas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -320,6 +326,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Recordatorio.resx">
+      <DependentUpon>Recordatorio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Rutinas.resx">
       <DependentUpon>Rutinas.cs</DependentUpon>
     </EmbeddedResource>

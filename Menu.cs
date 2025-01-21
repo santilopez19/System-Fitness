@@ -103,5 +103,11 @@ namespace System_Fitness
             Inicio inicioControl = new Inicio();
             CargarUserControl(inicioControl);
         }
+
+        private void btnRecordatorios_Click(object sender, EventArgs e)
+        {// Verificar si el evento se ejecuta
+            Recordatorio recordatorio = new Recordatorio();
+            CargarUserControl(recordatorio);
+        }
     }
 }
