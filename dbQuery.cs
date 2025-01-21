@@ -37,6 +37,19 @@ namespace System_Fitness
                 return -1;
             }
         }
+        public int RegistrarVisita(int clienteId)
+        {
+            string query = "INSERT INTO Visitas (Fecha, ClienteId) VALUES (@Fecha, @ClienteId);";
+
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+        new SqlParameter("@Fecha", DateTime.Today), // Fecha actual
+        new SqlParameter("@ClienteId", clienteId)   // ID del cliente
+            };
+
+            return ExecuteNonQuery(query, parametros);
+        }
+
 
         public int InsertarCliente(string nombre, string apellido, string dni, DateTime fechaNacimiento, char sexo, string email, string usuarioWeb, string contraseñaWeb)
         {

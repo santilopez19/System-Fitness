@@ -44,7 +44,9 @@
             this.cmbHorario = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblTipoClase = new System.Windows.Forms.Label();
             this.lblHorario = new System.Windows.Forms.Label();
+            this.guna2ContainerControl1 = new Guna.UI2.WinForms.Guna2ContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClases)).BeginInit();
+            this.guna2ContainerControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCupo
@@ -62,7 +64,7 @@
             this.txtCupo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCupo.ForeColor = System.Drawing.Color.Black;
             this.txtCupo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCupo.Location = new System.Drawing.Point(201, 92);
+            this.txtCupo.Location = new System.Drawing.Point(158, 92);
             this.txtCupo.Margin = new System.Windows.Forms.Padding(5);
             this.txtCupo.Name = "txtCupo";
             this.txtCupo.PasswordChar = '\0';
@@ -83,7 +85,7 @@
             this.btnEliminar.FillColor = System.Drawing.Color.DarkSalmon;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminar.Location = new System.Drawing.Point(1224, 72);
+            this.btnEliminar.Location = new System.Drawing.Point(1181, 72);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(5);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(169, 60);
@@ -102,7 +104,7 @@
             this.btnModificar.FillColor = System.Drawing.Color.Khaki;
             this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.Color.Black;
-            this.btnModificar.Location = new System.Drawing.Point(1034, 72);
+            this.btnModificar.Location = new System.Drawing.Point(991, 72);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(5);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(169, 60);
@@ -121,7 +123,7 @@
             this.btnCrear.FillColor = System.Drawing.Color.LightGreen;
             this.btnCrear.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrear.ForeColor = System.Drawing.Color.Black;
-            this.btnCrear.Location = new System.Drawing.Point(846, 72);
+            this.btnCrear.Location = new System.Drawing.Point(803, 72);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(5);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(169, 60);
@@ -141,7 +143,7 @@
             this.cmbClase.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbClase.ForeColor = System.Drawing.Color.Black;
             this.cmbClase.ItemHeight = 30;
-            this.cmbClase.Location = new System.Drawing.Point(546, 102);
+            this.cmbClase.Location = new System.Drawing.Point(503, 102);
             this.cmbClase.Margin = new System.Windows.Forms.Padding(5);
             this.cmbClase.Name = "cmbClase";
             this.cmbClase.Size = new System.Drawing.Size(201, 36);
@@ -156,7 +158,7 @@
             this.dtpFechaClase.FillColor = System.Drawing.Color.WhiteSmoke;
             this.dtpFechaClase.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaClase.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaClase.Location = new System.Drawing.Point(201, 24);
+            this.dtpFechaClase.Location = new System.Drawing.Point(158, 24);
             this.dtpFechaClase.Margin = new System.Windows.Forms.Padding(5);
             this.dtpFechaClase.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaClase.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -170,7 +172,7 @@
             this.lblCupo.AutoSize = true;
             this.lblCupo.BackColor = System.Drawing.Color.Transparent;
             this.lblCupo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCupo.Location = new System.Drawing.Point(95, 102);
+            this.lblCupo.Location = new System.Drawing.Point(52, 102);
             this.lblCupo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCupo.Name = "lblCupo";
             this.lblCupo.Size = new System.Drawing.Size(62, 30);
@@ -206,7 +208,7 @@
             this.dgvClases.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClases.EnableHeadersVisualStyles = true;
             this.dgvClases.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvClases.Location = new System.Drawing.Point(36, 219);
+            this.dgvClases.Location = new System.Drawing.Point(21, 187);
             this.dgvClases.Margin = new System.Windows.Forms.Padding(5);
             this.dgvClases.Name = "dgvClases";
             this.dgvClases.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -220,7 +222,7 @@
             this.dgvClases.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvClases.RowHeadersVisible = false;
             this.dgvClases.RowHeadersWidth = 40;
-            this.dgvClases.Size = new System.Drawing.Size(1588, 611);
+            this.dgvClases.Size = new System.Drawing.Size(1588, 632);
             this.dgvClases.TabIndex = 34;
             this.dgvClases.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvClases.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -251,7 +253,7 @@
             this.lblFecha.AutoSize = true;
             this.lblFecha.BackColor = System.Drawing.Color.Transparent;
             this.lblFecha.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.Location = new System.Drawing.Point(95, 42);
+            this.lblFecha.Location = new System.Drawing.Point(52, 42);
             this.lblFecha.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(67, 30);
@@ -270,7 +272,7 @@
             this.cmbHorario.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbHorario.ForeColor = System.Drawing.Color.Black;
             this.cmbHorario.ItemHeight = 30;
-            this.cmbHorario.Location = new System.Drawing.Point(546, 42);
+            this.cmbHorario.Location = new System.Drawing.Point(503, 42);
             this.cmbHorario.Margin = new System.Windows.Forms.Padding(5);
             this.cmbHorario.Name = "cmbHorario";
             this.cmbHorario.Size = new System.Drawing.Size(201, 36);
@@ -282,7 +284,7 @@
             this.lblTipoClase.AutoSize = true;
             this.lblTipoClase.BackColor = System.Drawing.Color.Transparent;
             this.lblTipoClase.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoClase.Location = new System.Drawing.Point(402, 102);
+            this.lblTipoClase.Location = new System.Drawing.Point(359, 102);
             this.lblTipoClase.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTipoClase.Name = "lblTipoClase";
             this.lblTipoClase.Size = new System.Drawing.Size(134, 30);
@@ -294,35 +296,46 @@
             this.lblHorario.AutoSize = true;
             this.lblHorario.BackColor = System.Drawing.Color.Transparent;
             this.lblHorario.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHorario.Location = new System.Drawing.Point(466, 42);
+            this.lblHorario.Location = new System.Drawing.Point(423, 42);
             this.lblHorario.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblHorario.Name = "lblHorario";
             this.lblHorario.Size = new System.Drawing.Size(82, 30);
             this.lblHorario.TabIndex = 38;
             this.lblHorario.Text = "Horario";
             // 
+            // guna2ContainerControl1
+            // 
+            this.guna2ContainerControl1.BorderRadius = 15;
+            this.guna2ContainerControl1.Controls.Add(this.txtCupo);
+            this.guna2ContainerControl1.Controls.Add(this.dgvClases);
+            this.guna2ContainerControl1.Controls.Add(this.lblTipoClase);
+            this.guna2ContainerControl1.Controls.Add(this.btnCrear);
+            this.guna2ContainerControl1.Controls.Add(this.lblHorario);
+            this.guna2ContainerControl1.Controls.Add(this.btnModificar);
+            this.guna2ContainerControl1.Controls.Add(this.cmbHorario);
+            this.guna2ContainerControl1.Controls.Add(this.btnEliminar);
+            this.guna2ContainerControl1.Controls.Add(this.lblFecha);
+            this.guna2ContainerControl1.Controls.Add(this.dtpFechaClase);
+            this.guna2ContainerControl1.Controls.Add(this.lblCupo);
+            this.guna2ContainerControl1.Controls.Add(this.cmbClase);
+            this.guna2ContainerControl1.Location = new System.Drawing.Point(14, 19);
+            this.guna2ContainerControl1.Name = "guna2ContainerControl1";
+            this.guna2ContainerControl1.Size = new System.Drawing.Size(1628, 845);
+            this.guna2ContainerControl1.TabIndex = 40;
+            this.guna2ContainerControl1.Text = "guna2ContainerControl1";
+            // 
             // Calendario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblTipoClase);
-            this.Controls.Add(this.lblHorario);
-            this.Controls.Add(this.cmbHorario);
-            this.Controls.Add(this.lblFecha);
-            this.Controls.Add(this.lblCupo);
-            this.Controls.Add(this.dgvClases);
-            this.Controls.Add(this.cmbClase);
-            this.Controls.Add(this.dtpFechaClase);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnCrear);
-            this.Controls.Add(this.txtCupo);
+            this.Controls.Add(this.guna2ContainerControl1);
             this.Name = "Calendario";
             this.Size = new System.Drawing.Size(1662, 881);
             this.Load += new System.EventHandler(this.Calendario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClases)).EndInit();
+            this.guna2ContainerControl1.ResumeLayout(false);
+            this.guna2ContainerControl1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -339,5 +352,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbHorario;
         private System.Windows.Forms.Label lblTipoClase;
         private System.Windows.Forms.Label lblHorario;
+        private Guna.UI2.WinForms.Guna2ContainerControl guna2ContainerControl1;
     }
 }

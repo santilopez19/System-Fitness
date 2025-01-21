@@ -33,7 +33,6 @@
             this.ContenedorLateral = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.btnConfig = new Guna.UI2.WinForms.Guna2Button();
             this.btnIngresos = new Guna.UI2.WinForms.Guna2Button();
-            this.btnEstadistica = new Guna.UI2.WinForms.Guna2Button();
             this.btnpagos = new Guna.UI2.WinForms.Guna2Button();
             this.btnFinance = new Guna.UI2.WinForms.Guna2Button();
             this.btnCalendario = new Guna.UI2.WinForms.Guna2Button();
@@ -41,6 +40,7 @@
             this.btnInicio = new Guna.UI2.WinForms.Guna2Button();
             this.ContenedorCentral = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.btnRecordatorios = new Guna.UI2.WinForms.Guna2Button();
             this.ContenedorSuperior.SuspendLayout();
             this.ContenedorLateral.SuspendLayout();
             this.ContenedorCentral.SuspendLayout();
@@ -76,9 +76,9 @@
             this.ContenedorLateral.BorderRadius = 15;
             this.ContenedorLateral.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
             this.ContenedorLateral.BorderThickness = 10;
+            this.ContenedorLateral.Controls.Add(this.btnRecordatorios);
             this.ContenedorLateral.Controls.Add(this.btnConfig);
             this.ContenedorLateral.Controls.Add(this.btnIngresos);
-            this.ContenedorLateral.Controls.Add(this.btnEstadistica);
             this.ContenedorLateral.Controls.Add(this.btnpagos);
             this.ContenedorLateral.Controls.Add(this.btnFinance);
             this.ContenedorLateral.Controls.Add(this.btnCalendario);
@@ -139,31 +139,6 @@
             this.btnIngresos.Text = "Ingresos";
             this.btnIngresos.UseTransparentBackground = true;
             this.btnIngresos.Click += new System.EventHandler(this.btnIngresos_Click);
-            // 
-            // btnEstadistica
-            // 
-            this.btnEstadistica.Animated = true;
-            this.btnEstadistica.BackColor = System.Drawing.Color.Transparent;
-            this.btnEstadistica.BorderRadius = 15;
-            this.btnEstadistica.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-            this.btnEstadistica.DisabledState.BorderColor = System.Drawing.Color.Transparent;
-            this.btnEstadistica.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.btnEstadistica.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEstadistica.DisabledState.ForeColor = System.Drawing.Color.White;
-            this.btnEstadistica.FillColor = System.Drawing.Color.LightCyan;
-            this.btnEstadistica.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnEstadistica.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstadistica.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.btnEstadistica.IndicateFocus = true;
-            this.btnEstadistica.Location = new System.Drawing.Point(15, 369);
-            this.btnEstadistica.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEstadistica.Name = "btnEstadistica";
-            this.btnEstadistica.PressedColor = System.Drawing.Color.Transparent;
-            this.btnEstadistica.Size = new System.Drawing.Size(161, 46);
-            this.btnEstadistica.TabIndex = 6;
-            this.btnEstadistica.Text = "Estadistica";
-            this.btnEstadistica.UseTransparentBackground = true;
-            this.btnEstadistica.Click += new System.EventHandler(this.btnEstadistica_Click);
             // 
             // btnpagos
             // 
@@ -311,6 +286,30 @@
             this.mainPanel.Size = new System.Drawing.Size(1662, 881);
             this.mainPanel.TabIndex = 0;
             // 
+            // btnRecordatorios
+            // 
+            this.btnRecordatorios.Animated = true;
+            this.btnRecordatorios.BackColor = System.Drawing.Color.Transparent;
+            this.btnRecordatorios.BorderRadius = 15;
+            this.btnRecordatorios.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            this.btnRecordatorios.DisabledState.BorderColor = System.Drawing.Color.Transparent;
+            this.btnRecordatorios.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.btnRecordatorios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRecordatorios.DisabledState.ForeColor = System.Drawing.Color.White;
+            this.btnRecordatorios.FillColor = System.Drawing.Color.LightCyan;
+            this.btnRecordatorios.FocusedColor = System.Drawing.Color.Transparent;
+            this.btnRecordatorios.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecordatorios.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.btnRecordatorios.IndicateFocus = true;
+            this.btnRecordatorios.Location = new System.Drawing.Point(15, 369);
+            this.btnRecordatorios.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRecordatorios.Name = "btnRecordatorios";
+            this.btnRecordatorios.PressedColor = System.Drawing.Color.Transparent;
+            this.btnRecordatorios.Size = new System.Drawing.Size(161, 46);
+            this.btnRecordatorios.TabIndex = 9;
+            this.btnRecordatorios.Text = "Recordatorio";
+            this.btnRecordatorios.UseTransparentBackground = true;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,7 +339,6 @@
         private Guna.UI2.WinForms.Guna2Button btnInicio;
         private Guna.UI2.WinForms.Guna2Button btnClientes;
         private Guna.UI2.WinForms.Guna2Button btnIngresos;
-        private Guna.UI2.WinForms.Guna2Button btnEstadistica;
         private Guna.UI2.WinForms.Guna2Button btnpagos;
         private Guna.UI2.WinForms.Guna2Button btnFinance;
         private Guna.UI2.WinForms.Guna2Button btnCalendario;
@@ -348,6 +346,7 @@
         private Guna.UI2.WinForms.Guna2Button btnConfig;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Panel mainPanel;
+        private Guna.UI2.WinForms.Guna2Button btnRecordatorios;
     }
 }
 

@@ -22,7 +22,7 @@ namespace System_Fitness
             });
 
             cmbGrafico2.Items.AddRange(new string[] {
-                "Asistencias por día/hora", "Frecuencia de uso", "Clientes inactivos",
+                 "Frecuencia de uso",
                 "Promedio de visitas por cliente",
             });
 
@@ -30,24 +30,77 @@ namespace System_Fitness
             dtpFechaDesde.Value = DateTime.Now.AddMonths(-1); // Último mes por defecto
             dtpFechaHasta.Value = DateTime.Now;
         }
-
-        private void CargarDatosEnGrafico(Chart chart, string query, SqlParameter[] parameters, string xField, string yField)
+        private void CargarEstadisticaGrafico2(string estadistica)
         {
-            DataTable data = db.ExecuteQuery(query, parameters);
+            DateTime fechaDesde = dtpFechaDesde.Value;
+            DateTime fechaHasta = dtpFechaHasta.Value;
+
+            switch (estadistica)
+            {
+                case "Frecuencia de uso":
+                    MostrarFrecuenciaDeUso(chartDos, fechaDesde, fechaHasta);
+                    break;
+                case "Promedio de visitas por cliente":
+                    MostrarPromedioVisitasPorCliente(chartDos, fechaDesde, fechaHasta);
+                    break;
+            }
+        }
+        private void MostrarFrecuenciaDeUso(Chart chart, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            string query = @"
+        SELECT v.ClienteId, COUNT(*) AS Frecuencia
+        FROM Visitas v
+        WHERE v.Fecha BETWEEN @FechaDesde AND @FechaHasta
+        GROUP BY v.ClienteId";
+
+            SqlCommand command = new SqlCommand(query, db.GetConnection());
+            command.Parameters.AddWithValue("@FechaDesde", fechaDesde);
+            command.Parameters.AddWithValue("@FechaHasta", fechaHasta);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
 
             chart.Series.Clear();
-            chart.DataSource = data;
+            chart.Series.Add("Frecuencia de Uso");
 
-            chart.Series.Add(new Series
+            foreach (DataRow row in dataTable.Rows)
             {
-                Name = "Serie",
-                XValueMember = xField,
-                YValueMembers = yField,
-                ChartType = SeriesChartType.Line
-            });
-
-            chart.DataBind();
+                chart.Series["Frecuencia de Uso"].Points.AddXY(row["ClienteId"], row["Frecuencia"]);
+            }
         }
+
+        private void MostrarPromedioVisitasPorCliente(Chart chart, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            string query = @"
+        SELECT AVG(visitas) AS Promedio
+        FROM (
+            SELECT COUNT(*) AS visitas
+            FROM Visitas v
+            WHERE v.Fecha BETWEEN @FechaDesde AND @FechaHasta
+            GROUP BY v.ClienteId
+        ) AS subconsulta";
+
+            SqlCommand command = new SqlCommand(query, db.GetConnection());
+            command.Parameters.AddWithValue("@FechaDesde", fechaDesde);
+            command.Parameters.AddWithValue("@FechaHasta", fechaHasta);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            chart.Series.Clear();
+            chart.Series.Add("Promedio Visitas por Cliente");
+            chart.Series["Promedio Visitas por Cliente"].Points.AddXY("Promedio", dataTable.Rows[0]["Promedio"]);
+        }
+
+
+
+
+
+
+
+
 
         private void CargarEstadisticaGrafico1(string estadistica)
         {
@@ -74,318 +127,214 @@ namespace System_Fitness
             }
         }
 
-        private void CargarEstadisticaGrafico2(string estadistica)
-        {
-            DateTime fechaDesde = dtpFechaDesde.Value;
-            DateTime fechaHasta = dtpFechaHasta.Value;
 
-            switch (estadistica)
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            // Filtrar por la opción seleccionada en cmbGrafico1
+            if (cmbGrafico1.SelectedItem != null)
             {
-                case "Asistencias por día/hora":
-                    MostrarAsistenciasPorDia(chartDos, fechaDesde, fechaHasta);
-                    break;
-                case "Frecuencia de uso":
-                    MostrarFrecuenciaUso(chartDos, fechaDesde, fechaHasta);
-                    break;
-                case "Clientes inactivos":
-                    MostrarClientesInactivos(chartDos, fechaDesde, fechaHasta);
-                    break;
-                case "Promedio de visitas por cliente":
-                    MostrarPromedioVisitasPorCliente(chartDos, fechaDesde, fechaHasta);
-                    break;
+                CargarEstadisticaGrafico1(cmbGrafico1.SelectedItem.ToString());
+            }
+
+            // Filtrar por la opción seleccionada en cmbGrafico2
+            if (cmbGrafico2.SelectedItem != null)
+            {
+                CargarEstadisticaGrafico2(cmbGrafico2.SelectedItem.ToString());
             }
         }
+        private void ConfigurarGrafico(Chart chart)
+        {
+            chart.ChartAreas.Clear();
+            ChartArea chartArea = new ChartArea();
+            chart.ChartAreas.Add(chartArea);
 
-        public void MostrarPromedioVisitasPorCliente(Chart chart, DateTime desde, DateTime hasta)
+            // Configuración de los valores del eje X (Mes/Año)
+            chartArea.AxisX.Title = "Mes/Año";
+            chartArea.AxisX.IntervalType = DateTimeIntervalType.Months;
+            chartArea.AxisX.Interval = 1; // Muestra un intervalo por mes
+
+            // Configuración del eje Y// O el título correspondiente a la estadística
+            chartArea.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+
+            // Asignación de tipo de gráfico
+        }
+
+        private void MostrarClientesActivos(Chart chart, DateTime fechaDesde, DateTime fechaHasta)
         {
             string query = @"
-        SELECT ClienteID, COUNT(*) / DATEDIFF(DAY, @Desde, @Hasta) AS PromedioVisitas
-        FROM Visitas
-        WHERE FechaVisita BETWEEN @Desde AND @Hasta
-        GROUP BY ClienteID";
+        SELECT YEAR(v.Fecha) AS Año, MONTH(v.Fecha) AS Mes, COUNT(DISTINCT v.ClienteId) AS ClientesActivos
+        FROM Visitas v
+        WHERE v.Fecha BETWEEN @FechaDesde AND @FechaHasta
+        GROUP BY YEAR(v.Fecha), MONTH(v.Fecha)
+        ORDER BY Año, Mes";
 
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Desde", desde),
-                new SqlParameter("@Hasta", hasta)
-            };
+            SqlCommand command = new SqlCommand(query, db.GetConnection());
+            command.Parameters.AddWithValue("@FechaDesde", fechaDesde);
+            command.Parameters.AddWithValue("@FechaHasta", fechaHasta);
 
-            DataTable result = db.ExecuteQuery(query, parameters);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
 
-            // Configurar la serie del gráfico
-            chart.Series.Clear();
-            var series = chart.Series.Add("Promedio de Visitas por Cliente");
-            series.ChartType = SeriesChartType.Column;
-
-            // Agregar los datos al gráfico
-            foreach (DataRow row in result.Rows)
+            // Verificación para asegurarse de que se estén obteniendo varios puntos
+            if (dataTable.Rows.Count == 0)
             {
-                string clienteId = row["ClienteID"].ToString();
-                decimal promedioVisitas = Convert.ToDecimal(row["PromedioVisitas"]);
-
-                series.Points.AddXY(clienteId, promedioVisitas); // Agrega datos al gráfico
+                MessageBox.Show("No hay datos para mostrar en el gráfico.");
+                return;
             }
+
+            // Limpiar serie anterior
+            chart.Series.Clear();
+            chart.Series.Add("Clientes Activos");
+
+            // Agregar los puntos al gráfico por cada mes
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string fechaMes = $"{row["Mes"]}/{row["Año"]}"; // Formato Mes/Año
+                chart.Series["Clientes Activos"].Points.AddXY(fechaMes, row["ClientesActivos"]);
+            }
+
+            // Llamar a la función ConfigurarGrafico para que se ajusten las propiedades del gráfico
+            ConfigurarGrafico(chart);
+        }
+
+
+        private void MostrarNuevosClientes(Chart chart, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            string query = @"
+        SELECT YEAR(c.FechaIngreso) AS Año, MONTH(c.FechaIngreso) AS Mes, COUNT(c.ClienteID) AS NuevosClientes
+        FROM Clientes c
+        WHERE c.FechaIngreso BETWEEN @FechaDesde AND @FechaHasta
+        GROUP BY YEAR(c.FechaIngreso), MONTH(c.FechaIngreso)
+        ORDER BY Año, Mes";
+
+            SqlCommand command = new SqlCommand(query, db.GetConnection());
+            command.Parameters.AddWithValue("@FechaDesde", fechaDesde);
+            command.Parameters.AddWithValue("@FechaHasta", fechaHasta);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            // Limpiar serie anterior
+            chart.Series.Clear();
+            chart.Series.Add("Nuevos Clientes");
+
+            // Agregar puntos al gráfico para cada mes
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string fechaMes = $"{row["Mes"]}/{row["Año"]}"; // Formato Mes/Año
+                chart.Series["Nuevos Clientes"].Points.AddXY(fechaMes, row["NuevosClientes"]);
+            }
+
+            // Llamar a la función ConfigurarGrafico para que se ajusten las propiedades del gráfico
+            ConfigurarGrafico(chart);
+        }
+
+        private void MostrarRetencionClientes(Chart chart, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            string query = @"
+        SELECT YEAR(v.Fecha) AS Año, MONTH(v.Fecha) AS Mes, COUNT(DISTINCT v.ClienteId) AS ClientesRetenidos
+        FROM Visitas v
+        WHERE v.Fecha BETWEEN @FechaDesde AND @FechaHasta
+        GROUP BY YEAR(v.Fecha), MONTH(v.Fecha)
+        ORDER BY Año, Mes";
+
+            SqlCommand command = new SqlCommand(query, db.GetConnection());
+            command.Parameters.AddWithValue("@FechaDesde", fechaDesde);
+            command.Parameters.AddWithValue("@FechaHasta", fechaHasta);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            // Limpiar serie anterior
+            chart.Series.Clear();
+            chart.Series.Add("Clientes Retenidos");
+
+            // Agregar puntos al gráfico para cada mes
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string fechaMes = $"{row["Mes"]}/{row["Año"]}"; // Formato Mes/Año
+                chart.Series["Clientes Retenidos"].Points.AddXY(fechaMes, row["ClientesRetenidos"]);
+            }
+
+            // Llamar a la función ConfigurarGrafico para que se ajusten las propiedades del gráfico
+            ConfigurarGrafico(chart);
+        }
+
+        private void MostrarEdadPromedio(Chart chart)
+        {
+            string query = @"
+        SELECT YEAR(GETDATE()) - YEAR(c.FechaNacimiento) AS EdadPromedio
+        FROM Clientes c";
+
+            SqlCommand command = new SqlCommand(query, db.GetConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            // Limpiar serie anterior
+            chart.Series.Clear();
+            chart.Series.Add("Edad Promedio");
+
+            // Calcular la edad promedio
+            if (dataTable.Rows.Count > 0)
+            {
+                decimal edadPromedio = Convert.ToDecimal(dataTable.Compute("AVG(EdadPromedio)", string.Empty));
+                chart.Series["Edad Promedio"].Points.AddXY("Edad Promedio", edadPromedio);
+            }
+
+            // Llamar a la función ConfigurarGrafico para que se ajusten las propiedades del gráfico
+            ConfigurarGrafico(chart);
         }
 
         private void MostrarDistribucionPorGenero(Chart chart)
         {
             string query = @"
-        SELECT Sexo, COUNT(*) AS Cantidad
+        SELECT Sexo, COUNT(ClienteID) AS Cantidad
         FROM Clientes
         GROUP BY Sexo";
 
-            DataTable dt = db.ExecuteQuery(query);
+            SqlCommand command = new SqlCommand(query, db.GetConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
 
-            chart.Series["Series1"].Points.Clear();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                chart.Series["Series1"].Points.AddXY(row["Sexo"], row["Cantidad"]);
-            }
-        }
-
-        public void MostrarEdadPromedio(Chart chart)
-        {
-            string query = "SELECT AVG(DATEDIFF(YEAR, FechaNacimiento, GETDATE())) AS EdadPromedio FROM Clientes";
-
-            DataTable result = db.ExecuteQuery(query);
-
+            // Limpiar serie anterior
             chart.Series.Clear();
-            var series = chart.Series.Add("Edad Promedio");
-            series.ChartType = SeriesChartType.Column;
+            chart.Series.Add("Distribución por Género");
 
-            foreach (DataRow row in result.Rows)
+            // Agregar puntos al gráfico
+            foreach (DataRow row in dataTable.Rows)
             {
-                series.Points.AddXY("Edad Promedio", Convert.ToInt32(row["EdadPromedio"]));
+                string genero = row["Sexo"].ToString();
+                chart.Series["Distribución por Género"].Points.AddXY(genero, row["Cantidad"]);
             }
+
+            // Llamar a la función ConfigurarGrafico para que se ajusten las propiedades del gráfico
+            ConfigurarGrafico(chart);
         }
 
-        public void MostrarClientesActivos(Chart chart, DateTime fechaDesde, DateTime fechaHasta)
+
+        private void chartUno_Click(object sender, EventArgs e)
         {
-            string query = @"
-        SELECT COUNT(*) AS ClientesActivos
-        FROM Clientes
-        WHERE FechaAlta BETWEEN @Desde AND @Hasta";
-
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Desde", fechaDesde),
-                new SqlParameter("@Hasta", fechaHasta)
-            };
-
-            DataTable result = db.ExecuteQuery(query, parameters);
-
-            chart.Series.Clear();
-            var series = chart.Series.Add("Clientes Activos");
-            series.ChartType = SeriesChartType.Column;
-
-            foreach (DataRow row in result.Rows)
-            {
-                series.Points.AddXY("Clientes Activos", Convert.ToInt32(row["ClientesActivos"]));
-            }
-        }
-
-        private void MostrarNuevosClientes(Chart chart, DateTime fechaDesde, DateTime fechaHasta)
-        {
-            string query = @"
-        SELECT COUNT(*) AS NuevosClientes, CAST(FechaIngreso AS DATE) AS Fecha
-        FROM Clientes
-        WHERE FechaIngreso BETWEEN @FechaDesde AND @FechaHasta
-        GROUP BY CAST(FechaIngreso AS DATE)
-        ORDER BY Fecha";
-
-            SqlParameter[] parameters = {
-                new SqlParameter("@FechaDesde", fechaDesde),
-                new SqlParameter("@FechaHasta", fechaHasta)
-            };
-
-            CargarDatosEnGrafico(chart, query, parameters, "Fecha", "NuevosClientes");
-        }
-
-        public void MostrarRetencionClientes(Chart chart, DateTime desde, DateTime hasta)
-        {
-            string query = @"
-        SELECT ClienteID, COUNT(*) AS CantidadVisitas
-        FROM Visitas
-        WHERE FechaVisita BETWEEN @Desde AND @Hasta
-        GROUP BY ClienteID";
-
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Desde", desde),
-                new SqlParameter("@Hasta", hasta)
-            };
-
-            DataTable result = db.ExecuteQuery(query, parameters);
-
-            // Configurar la serie del gráfico
-            chart.Series.Clear();
-            var series = chart.Series.Add("Retención de Clientes");
-            series.ChartType = SeriesChartType.Column;
-
-            // Agregar los datos al gráfico
-            foreach (DataRow row in result.Rows)
-            {
-                string clienteId = row["ClienteID"].ToString();
-                int cantidadVisitas = Convert.ToInt32(row["CantidadVisitas"]);
-
-                series.Points.AddXY(clienteId, cantidadVisitas); // Agrega datos al gráfico
-            }
-        }
-
-        public void MostrarFrecuenciaUso(Chart chart, DateTime desde, DateTime hasta)
-        {
-            string query = @"
-        SELECT ClienteID, COUNT(*) AS FrecuenciaUso
-        FROM Visitas
-        WHERE FechaVisita BETWEEN @Desde AND @Hasta
-        GROUP BY ClienteID";
-
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Desde", desde),
-                new SqlParameter("@Hasta", hasta)
-            };
-
-            DataTable result = db.ExecuteQuery(query, parameters);
-
-            // Configurar la serie del gráfico
-            chart.Series.Clear();
-            var series = chart.Series.Add("Frecuencia de Uso");
-            series.ChartType = SeriesChartType.Column;
-
-            // Agregar los datos al gráfico
-            foreach (DataRow row in result.Rows)
-            {
-                string clienteId = row["ClienteID"].ToString();
-                int frecuenciaUso = Convert.ToInt32(row["FrecuenciaUso"]);
-
-                series.Points.AddXY(clienteId, frecuenciaUso); // Agrega datos al gráfico
-            }
-        }
-
-        public void MostrarClientesInactivos(Chart chart, DateTime desde, DateTime hasta)
-        {
-            string query = @"
-        SELECT ClienteID
-        FROM Clientes
-        WHERE ClienteID NOT IN (
-            SELECT ClienteID
-            FROM Visitas
-            WHERE FechaVisita BETWEEN @Desde AND @Hasta
-        )";
-
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Desde", desde),
-                new SqlParameter("@Hasta", hasta)
-            };
-
-            DataTable result = db.ExecuteQuery(query, parameters);
-
-            // Configurar la serie del gráfico
-            chart.Series.Clear();
-            var series = chart.Series.Add("Clientes Inactivos");
-            series.ChartType = SeriesChartType.Column;
-
-            // Agregar los datos al gráfico
-            foreach (DataRow row in result.Rows)
-            {
-                string clienteId = row["ClienteID"].ToString();
-                series.Points.AddXY(clienteId, 1); // Un punto por cada cliente inactivo
-            }
-        }
-
-        public void MostrarAsistenciasPorDia(Chart chart, DateTime desde, DateTime hasta)
-        {
-            string query = @"
-        SELECT DAY(FechaVisita) AS Dia, COUNT(*) AS Asistencias
-        FROM Visitas
-        WHERE FechaVisita BETWEEN @Desde AND @Hasta
-        GROUP BY DAY(FechaVisita)";
-
-            SqlParameter[] parameters = new SqlParameter[] {
-                new SqlParameter("@Desde", desde),
-                new SqlParameter("@Hasta", hasta)
-            };
-
-            DataTable result = db.ExecuteQuery(query, parameters);
-
-            // Configurar la serie del gráfico
-            chart.Series.Clear();
-            var series = chart.Series.Add("Asistencias por Día");
-            series.ChartType = SeriesChartType.Column;
-
-            // Agregar los datos al gráfico
-            foreach (DataRow row in result.Rows)
-            {
-                string dia = row["Dia"].ToString();
-                int asistencias = Convert.ToInt32(row["Asistencias"]);
-
-                series.Points.AddXY(dia, asistencias); // Agrega datos al gráfico
-            }
-        }
-
-        private void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            // Obtener las fechas seleccionadas por el usuario
-            DateTime fechaDesde = dtpFechaDesde.Value;
-            DateTime fechaHasta = dtpFechaHasta.Value;
-
-            // Verificar si la fecha seleccionada es posterior a la fecha actual
-            if (fechaDesde > DateTime.Now || fechaHasta > DateTime.Now)
-            {
-                MessageBox.Show("Las fechas seleccionadas no pueden ser posteriores a la fecha actual.", "Error de Fecha", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Salir del método si la validación falla
-            }
-
-            try
-            {
-                // Ejecutar la consulta SQL
-                string query = "SELECT * FROM dbo.Visitas WHERE FechaAlta BETWEEN @FechaDesde AND @FechaHasta";
-                SqlParameter[] parameters = new SqlParameter[] {
-            new SqlParameter("@FechaDesde", SqlDbType.Date) { Value = fechaDesde },
-            new SqlParameter("@FechaHasta", SqlDbType.Date) { Value = fechaHasta }
-        };
-
-                // Ejecuta la consulta y llena el DataTable
-                DataTable dt = db.ExecuteQuery(query, parameters);
-
-                // Verifica si la tabla tiene resultados
-                if (dt.Rows.Count > 0)
-                {
-                    // Aquí reemplazamos MostrarGrafico por CargarEstadisticaGrafico1 o el método adecuado
-                    CargarEstadisticaGrafico1(cmbGrafico1.SelectedItem.ToString()); // Usando el gráfico adecuado para los resultados
-                }
-                else
-                {
-                    // Si no hay datos, limpiar el gráfico
-                    chartClientes.Series.Clear(); // Aquí usamos el chartClientes correctamente
-                    MessageBox.Show("No se encontraron registros para las fechas seleccionadas.", "Sin Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (SqlException ex)
-            {
-                // Captura errores relacionados con SQL
-                MessageBox.Show($"Error al ejecutar la consulta SQL: {ex.Message}", "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                // Captura errores generales (no SQL)
-                MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
         }
 
-        private void cmbGrafico1_SelectedIndexChanged(object sender, EventArgs e)
+        private void chartDos_Click(object sender, EventArgs e)
         {
-            if (cmbGrafico1.SelectedItem != null)
-            {
-                CargarEstadisticaGrafico1(cmbGrafico1.SelectedItem.ToString());
-            }
+
         }
 
-        private void cmbGrafico2_SelectedIndexChanged(object sender, EventArgs e)
+        private void dtpFechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            if (cmbGrafico2.SelectedItem != null)
-            {
-                CargarEstadisticaGrafico2(cmbGrafico2.SelectedItem.ToString());
-            }
+
+        }
+
+        private void dtpFechaDesde_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

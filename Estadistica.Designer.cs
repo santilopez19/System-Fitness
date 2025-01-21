@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2ContainerControl4 = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.cmbGrafico1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.chartUno = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -82,24 +82,24 @@
             this.cmbGrafico1.Name = "cmbGrafico1";
             this.cmbGrafico1.Size = new System.Drawing.Size(318, 36);
             this.cmbGrafico1.TabIndex = 49;
-            this.cmbGrafico1.SelectedIndexChanged += new System.EventHandler(this.cmbGrafico1_SelectedIndexChanged);
             // 
             // chartUno
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartUno.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartUno.Legends.Add(legend3);
+            chartArea5.Name = "ChartArea1";
+            this.chartUno.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartUno.Legends.Add(legend5);
             this.chartUno.Location = new System.Drawing.Point(25, 57);
             this.chartUno.Name = "chartUno";
             this.chartUno.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartUno.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartUno.Series.Add(series5);
             this.chartUno.Size = new System.Drawing.Size(1287, 275);
             this.chartUno.TabIndex = 47;
             this.chartUno.Text = "chart1";
+            this.chartUno.Click += new System.EventHandler(this.chartUno_Click);
             // 
             // lblGrafico
             // 
@@ -187,6 +187,7 @@
             this.dtpFechaHasta.Size = new System.Drawing.Size(201, 58);
             this.dtpFechaHasta.TabIndex = 49;
             this.dtpFechaHasta.Value = new System.DateTime(2024, 12, 31, 18, 53, 41, 904);
+            this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.dtpFechaHasta_ValueChanged);
             // 
             // dtpFechaDesde
             // 
@@ -204,6 +205,7 @@
             this.dtpFechaDesde.Size = new System.Drawing.Size(202, 58);
             this.dtpFechaDesde.TabIndex = 48;
             this.dtpFechaDesde.Value = new System.DateTime(2024, 12, 31, 18, 53, 41, 904);
+            this.dtpFechaDesde.ValueChanged += new System.EventHandler(this.dtpFechaDesde_ValueChanged);
             // 
             // lblFiltroTiempo
             // 
@@ -243,24 +245,24 @@
             this.cmbGrafico2.Name = "cmbGrafico2";
             this.cmbGrafico2.Size = new System.Drawing.Size(318, 36);
             this.cmbGrafico2.TabIndex = 48;
-            this.cmbGrafico2.SelectedIndexChanged += new System.EventHandler(this.cmbGrafico2_SelectedIndexChanged);
             // 
             // chartDos
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartDos.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartDos.Legends.Add(legend4);
+            chartArea6.Name = "ChartArea1";
+            this.chartDos.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartDos.Legends.Add(legend6);
             this.chartDos.Location = new System.Drawing.Point(25, 57);
             this.chartDos.Name = "chartDos";
             this.chartDos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartDos.Series.Add(series4);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chartDos.Series.Add(series6);
             this.chartDos.Size = new System.Drawing.Size(1563, 359);
             this.chartDos.TabIndex = 47;
             this.chartDos.Text = "chart1";
+            this.chartDos.Click += new System.EventHandler(this.chartDos_Click);
             // 
             // label3
             // 

@@ -19,6 +19,7 @@ namespace System_Fitness
             txtDNIingreso.Focus();
             this.AcceptButton = btnIngresar;
         }
+        private dbQuery db = new dbQuery();
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -70,7 +71,7 @@ namespace System_Fitness
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-
+            dbQuery db = new dbQuery();
             txtDNIingreso.Focus(); // Mantiene el foco en el campo del DNI
 
             try
@@ -82,34 +83,49 @@ namespace System_Fitness
                     StartTimerToClearLabel();
                     return;
                 }
+                    
+                // Instancia de la clase dbQuery
+                
 
-                // Obtener el nombre del cliente mediante el DNI ingresado
-                dbQuery db = new dbQuery();
-                string nombreCliente = db.ObtenerNombreClientePorDni(txtDNIingreso.Text);
-
-                if (nombreCliente != null)
+                // Obtener el ClienteID y el nombre del cliente por su DNI
+                string consultaCliente = "SELECT ClienteID, Nombre FROM Clientes WHERE DNI = @Dni";
+                SqlParameter[] parametros = new SqlParameter[]
                 {
-                    // Consulta para verificar si el cliente tiene pagos recientes
-                    string consultaPagosRecientes = @"
-            SELECT COUNT(*) 
-            FROM dbo.Pagos p 
-            WHERE p.ClienteID = (SELECT ClienteID FROM dbo.Clientes WHERE DNI = @Dni)
-            AND p.FechaPago >= DATEADD(DAY, -30, GETDATE());";  // Verifica si ha pagado en los últimos 30 días
+            new SqlParameter("@Dni", dni)
+                };
 
-                    SqlParameter[] parametros = new SqlParameter[]
+                DataTable clienteInfo = db.ExecuteQuery(consultaCliente, parametros);
+
+                if (clienteInfo.Rows.Count > 0) // Si el cliente existe
+                {
+                    int clienteId = Convert.ToInt32(clienteInfo.Rows[0]["ClienteID"]);
+                    string nombreCliente = clienteInfo.Rows[0]["Nombre"].ToString();
+
+                    // Consulta para verificar pagos recientes
+                    string consultaPagosRecientes = @"
+                SELECT COUNT(*) 
+                FROM Pagos 
+                WHERE ClienteID = @ClienteID 
+                AND FechaPago >= DATEADD(DAY, -30, GETDATE());";
+
+                    SqlParameter[] parametrosPagos = new SqlParameter[]
                     {
-                new SqlParameter("@Dni", dni)
+                new SqlParameter("@ClienteID", clienteId)
                     };
 
-                    int pagosRecientes = Convert.ToInt32(db.ExecuteScalar(consultaPagosRecientes, parametros));
+                    int pagosRecientes = Convert.ToInt32(db.ExecuteScalar(consultaPagosRecientes, parametrosPagos));
 
                     if (pagosRecientes > 0)
                     {
-                        lblNombreCliente.Text = $"Bienvenido, {nombreCliente}. Puede ingresar.";
+                        // Registrar la visita
+                        int resultado = db.RegistrarVisita(clienteId);
+
+                        lblNombreCliente.Text = $"Bienvenido, {nombreCliente}.";
+                        
                     }
                     else
                     {
-                        lblNombreCliente.Text = $"Lo sentimos, {nombreCliente}. No puede ingresar: no ha pagado.";
+                        lblNombreCliente.Text = $"Lo sentimos, {nombreCliente}.";
                     }
                 }
                 else
