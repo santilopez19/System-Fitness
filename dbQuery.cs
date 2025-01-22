@@ -209,6 +209,52 @@ namespace System_Fitness
 
             return null; // Devuelve null si no encuentra el cliente
         }
+        public int ActualizarConfiguracion(
+    string colorFondo,
+    string colorBarraLateral,
+    string colorSuperior,
+    string logo,
+    string nombreGimnasio,
+    string colorFondoIngreso,
+    string colorBordeCartelIngreso,
+    string cartelIngreso,
+    string foreColorNombreGimnasio)  // Argumento agregado
+        {
+            string query = @"
+UPDATE AjustesSistema
+SET 
+    ColorFondo = @ColorFondo,
+    ColorBarraLateral = @ColorBarraLateral,
+    ColorSuperior = @ColorSuperior,
+    Logo = @Logo,
+    NombreGimnasio = @NombreGimnasio,
+    ColorFondoIngreso = @ColorFondoIngreso,
+    ColorBordeCartelIngreso = @ColorBordeCartelIngreso,
+    CartelIngreso = @CartelIngreso,
+    ForeColorNombreGimnasio = @ForeColorNombreGimnasio  -- Columna agregada en la consulta
+WHERE AjusteID = 1";
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+        new SqlParameter("@ColorFondo", colorFondo),
+        new SqlParameter("@ColorBarraLateral", colorBarraLateral),
+        new SqlParameter("@ColorSuperior", colorSuperior),
+        new SqlParameter("@Logo", logo),
+        new SqlParameter("@NombreGimnasio", nombreGimnasio),
+        new SqlParameter("@ColorFondoIngreso", colorFondoIngreso),
+        new SqlParameter("@ColorBordeCartelIngreso", colorBordeCartelIngreso),
+        new SqlParameter("@CartelIngreso", cartelIngreso),
+        new SqlParameter("@ForeColorNombreGimnasio", foreColorNombreGimnasio)  // Argumento agregado a los parámetros
+            };
+
+            return ExecuteNonQuery(query, parameters);  // Usamos el método ExecuteNonQuery para ejecutar la consulta
+        }
+
+        public DataTable ObtenerConfiguracion()
+        {
+            string query = "SELECT * FROM AjustesSistema WHERE AjusteID = 1";
+            return ExecuteQuery(query);
+        }
 
     }
 }

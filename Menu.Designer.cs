@@ -41,9 +41,11 @@
             this.btnInicio = new Guna.UI2.WinForms.Guna2Button();
             this.ContenedorCentral = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.pctLogo = new System.Windows.Forms.PictureBox();
             this.ContenedorSuperior.SuspendLayout();
             this.ContenedorLateral.SuspendLayout();
             this.ContenedorCentral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // ContenedorSuperior
@@ -51,6 +53,7 @@
             this.ContenedorSuperior.BackColor = System.Drawing.Color.Transparent;
             this.ContenedorSuperior.BorderColor = System.Drawing.Color.White;
             this.ContenedorSuperior.BorderRadius = 15;
+            this.ContenedorSuperior.Controls.Add(this.pctLogo);
             this.ContenedorSuperior.Controls.Add(this.lblNombre);
             this.ContenedorSuperior.FillColor = System.Drawing.Color.SteelBlue;
             this.ContenedorSuperior.Location = new System.Drawing.Point(16, 17);
@@ -65,7 +68,7 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.Color.White;
-            this.lblNombre.Location = new System.Drawing.Point(3, 0);
+            this.lblNombre.Location = new System.Drawing.Point(80, 0);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(261, 50);
             this.lblNombre.TabIndex = 0;
@@ -102,9 +105,9 @@
             this.btnRecordatorios.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
             this.btnRecordatorios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnRecordatorios.DisabledState.ForeColor = System.Drawing.Color.White;
-            this.btnRecordatorios.FillColor = System.Drawing.Color.LightCyan;
+            this.btnRecordatorios.FillColor = System.Drawing.Color.White;
             this.btnRecordatorios.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnRecordatorios.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecordatorios.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecordatorios.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnRecordatorios.IndicateFocus = true;
             this.btnRecordatorios.Location = new System.Drawing.Point(15, 369);
@@ -127,9 +130,10 @@
             this.btnConfig.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnConfig.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnConfig.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnConfig.FillColor = System.Drawing.Color.Transparent;
-            this.btnConfig.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfig.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.btnConfig.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnConfig.FocusedColor = System.Drawing.Color.Transparent;
+            this.btnConfig.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfig.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnConfig.IndicateFocus = true;
             this.btnConfig.Location = new System.Drawing.Point(15, 850);
             this.btnConfig.Margin = new System.Windows.Forms.Padding(2);
@@ -150,9 +154,9 @@
             this.btnIngresos.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
             this.btnIngresos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnIngresos.DisabledState.ForeColor = System.Drawing.Color.White;
-            this.btnIngresos.FillColor = System.Drawing.Color.LightCyan;
+            this.btnIngresos.FillColor = System.Drawing.Color.White;
             this.btnIngresos.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnIngresos.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresos.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresos.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnIngresos.IndicateFocus = true;
             this.btnIngresos.Location = new System.Drawing.Point(15, 74);
@@ -175,9 +179,9 @@
             this.btnpagos.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
             this.btnpagos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnpagos.DisabledState.ForeColor = System.Drawing.Color.White;
-            this.btnpagos.FillColor = System.Drawing.Color.LightCyan;
+            this.btnpagos.FillColor = System.Drawing.Color.White;
             this.btnpagos.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnpagos.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnpagos.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnpagos.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnpagos.IndicateFocus = true;
             this.btnpagos.Location = new System.Drawing.Point(15, 192);
@@ -200,9 +204,9 @@
             this.btnFinance.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
             this.btnFinance.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnFinance.DisabledState.ForeColor = System.Drawing.Color.White;
-            this.btnFinance.FillColor = System.Drawing.Color.LightCyan;
+            this.btnFinance.FillColor = System.Drawing.Color.White;
             this.btnFinance.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnFinance.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinance.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinance.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnFinance.IndicateFocus = true;
             this.btnFinance.Location = new System.Drawing.Point(15, 310);
@@ -225,9 +229,9 @@
             this.btnCalendario.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
             this.btnCalendario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnCalendario.DisabledState.ForeColor = System.Drawing.Color.White;
-            this.btnCalendario.FillColor = System.Drawing.Color.LightCyan;
+            this.btnCalendario.FillColor = System.Drawing.Color.White;
             this.btnCalendario.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnCalendario.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalendario.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalendario.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnCalendario.IndicateFocus = true;
             this.btnCalendario.Location = new System.Drawing.Point(15, 251);
@@ -250,9 +254,9 @@
             this.btnClientes.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
             this.btnClientes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnClientes.DisabledState.ForeColor = System.Drawing.Color.White;
-            this.btnClientes.FillColor = System.Drawing.Color.LightCyan;
+            this.btnClientes.FillColor = System.Drawing.Color.White;
             this.btnClientes.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnClientes.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientes.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClientes.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnClientes.IndicateFocus = true;
             this.btnClientes.Location = new System.Drawing.Point(15, 133);
@@ -275,9 +279,9 @@
             this.btnInicio.DisabledState.CustomBorderColor = System.Drawing.Color.Transparent;
             this.btnInicio.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnInicio.DisabledState.ForeColor = System.Drawing.Color.White;
-            this.btnInicio.FillColor = System.Drawing.Color.LightCyan;
+            this.btnInicio.FillColor = System.Drawing.Color.White;
             this.btnInicio.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnInicio.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInicio.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInicio.ForeColor = System.Drawing.SystemColors.MenuText;
             this.btnInicio.IndicateFocus = true;
             this.btnInicio.Location = new System.Drawing.Point(15, 15);
@@ -311,6 +315,17 @@
             this.mainPanel.Size = new System.Drawing.Size(1662, 881);
             this.mainPanel.TabIndex = 0;
             // 
+            // pctLogo
+            // 
+            this.pctLogo.Image = global::System_Fitness.Properties.Resources.ECOAWSH1;
+            this.pctLogo.Location = new System.Drawing.Point(15, 3);
+            this.pctLogo.Name = "pctLogo";
+            this.pctLogo.Size = new System.Drawing.Size(59, 50);
+            this.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctLogo.TabIndex = 1;
+            this.pctLogo.TabStop = false;
+            this.pctLogo.Click += new System.EventHandler(this.pctLogo_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -329,6 +344,7 @@
             this.ContenedorSuperior.PerformLayout();
             this.ContenedorLateral.ResumeLayout(false);
             this.ContenedorCentral.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,10 +360,11 @@
         private Guna.UI2.WinForms.Guna2Button btnFinance;
         private Guna.UI2.WinForms.Guna2Button btnCalendario;
         private Guna.UI2.WinForms.Guna2ContainerControl ContenedorCentral;
-        private Guna.UI2.WinForms.Guna2Button btnConfig;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Panel mainPanel;
         private Guna.UI2.WinForms.Guna2Button btnRecordatorios;
+        private Guna.UI2.WinForms.Guna2Button btnConfig;
+        private System.Windows.Forms.PictureBox pctLogo;
     }
 }
 

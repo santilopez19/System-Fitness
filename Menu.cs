@@ -1,14 +1,61 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace System_Fitness
 {
     public partial class Menu : Form
     {
+        dbQuery db = new dbQuery();
         public Menu()
         {
             InitializeComponent();
+            AplicarConfiguraciones();
+        }
+        public void AplicarConfiguraciones()
+        {
+            DataTable dt = db.ObtenerConfiguracion();
+
+            if (dt.Rows.Count > 0)
+            {
+                // Aplicar configuraciones
+                this.BackColor = ColorTranslator.FromHtml(dt.Rows[0]["ColorFondo"].ToString());
+                ContenedorLateral.FillColor = ColorTranslator.FromHtml(dt.Rows[0]["ColorBarraLateral"].ToString());
+                ContenedorSuperior.FillColor = ColorTranslator.FromHtml(dt.Rows[0]["ColorSuperior"].ToString());
+                lblNombre.Text = "System Fitness - " + dt.Rows[0]["NombreGimnasio"].ToString();
+                lblNombre.ForeColor = ColorTranslator.FromHtml(dt.Rows[0]["ForeColorNombreGimnasio"].ToString());
+                CargarLogo(); ObtenerRutaLogo();
+            }
+        }
+        private void CargarLogo()
+        {
+            string logoPath = ObtenerRutaLogo();  // Recuperar la ruta desde la base de datos
+
+            if (!string.IsNullOrEmpty(logoPath) && File.Exists(logoPath))
+            {
+                pctLogo.ImageLocation = logoPath;  // Asignar la ruta al PictureBox
+            }
+            else
+            {
+                pctLogo.Image = null;  // Si no hay logo, dejar el PictureBox vacío
+            }
+        }
+
+        public string ObtenerRutaLogo()
+        {
+            string query = "SELECT Logo FROM AjustesSistema WHERE AjusteID = 1";
+            DataTable dt = db.ExecuteQuery(query);
+
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["Logo"].ToString();  // Obtener la ruta guardada en la base de datos
+            }
+
+            return null;
         }
 
         // Método para cargar cualquier UserControl
@@ -79,6 +126,7 @@ namespace System_Fitness
             // Cargar UserControl de configuración
             Configuracion configuracionControl = new Configuracion();
             CargarUserControl(configuracionControl);
+            AplicarConfiguraciones();
         }
 
         public static DataSet DataSetCache = new DataSet();
@@ -108,6 +156,11 @@ namespace System_Fitness
         {// Verificar si el evento se ejecuta
             Recordatorio recordatorio = new Recordatorio();
             CargarUserControl(recordatorio);
+        }
+
+        private void pctLogo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -18,6 +18,25 @@ namespace System_Fitness
             InitializeComponent();
             txtDNIingreso.Focus();
             this.AcceptButton = btnIngresar;
+            CargarConfiguracionIngreso();
+        }
+        private void CargarConfiguracionIngreso()
+        {
+            DataTable dt = db.ObtenerConfiguracion();  // Asumiendo que tienes un método para obtener la configuración
+
+            if (dt.Rows.Count > 0)
+            {
+                // Aplicar ColorFondoIngreso al BackColor del formulario
+                string colorFondoIngreso = dt.Rows[0]["ColorFondoIngreso"].ToString();
+                this.BackColor = ColorTranslator.FromHtml(colorFondoIngreso);  // Asignar el color de fondo del formulario
+
+                // Aplicar ColorBordeCartelIngreso al borde del Label
+                string colorBordeCartelIngreso = dt.Rows[0]["ColorBordeCartelIngreso"].ToString(); 
+
+                // Aplicar el texto del CartelIngreso al Label
+                string cartelIngreso = dt.Rows[0]["CartelIngreso"].ToString();
+                lblAviso.Text = cartelIngreso;  // Asignar el texto del cartel
+            }
         }
         private dbQuery db = new dbQuery();
 
@@ -121,6 +140,7 @@ namespace System_Fitness
                         int resultado = db.RegistrarVisita(clienteId);
 
                         lblNombreCliente.Text = $"Bienvenido, {nombreCliente}.";
+                        txtDNIingreso.Text = "";
                         
                     }
                     else

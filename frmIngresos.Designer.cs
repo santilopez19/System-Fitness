@@ -32,10 +32,10 @@
             this.lblNombreCliente = new System.Windows.Forms.Label();
             this.btnIngresar = new Guna.UI2.WinForms.Guna2Button();
             this.txtDNIingreso = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.lblAviso = new Guna.UI2.WinForms.Guna2TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,13 +43,12 @@
             // 
             this.lblNombreCliente.AutoSize = true;
             this.lblNombreCliente.BackColor = System.Drawing.Color.Transparent;
-            this.lblNombreCliente.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCliente.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreCliente.Location = new System.Drawing.Point(486, 622);
             this.lblNombreCliente.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNombreCliente.Name = "lblNombreCliente";
-            this.lblNombreCliente.Size = new System.Drawing.Size(144, 30);
+            this.lblNombreCliente.Size = new System.Drawing.Size(0, 40);
             this.lblNombreCliente.TabIndex = 42;
-            this.lblNombreCliente.Text = "\"lbl INGRESO\"";
             this.lblNombreCliente.Click += new System.EventHandler(this.lblTipoClase_Click);
             // 
             // btnIngresar
@@ -61,12 +60,12 @@
             this.btnIngresar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnIngresar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnIngresar.FillColor = System.Drawing.Color.LightGreen;
-            this.btnIngresar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresar.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.ForeColor = System.Drawing.Color.Black;
             this.btnIngresar.Location = new System.Drawing.Point(486, 525);
             this.btnIngresar.Margin = new System.Windows.Forms.Padding(5);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(169, 60);
+            this.btnIngresar.Size = new System.Drawing.Size(204, 66);
             this.btnIngresar.TabIndex = 41;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.Click += new System.EventHandler(this.btnCrear_Click);
@@ -83,7 +82,7 @@
             this.txtDNIingreso.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtDNIingreso.FillColor = System.Drawing.Color.WhiteSmoke;
             this.txtDNIingreso.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDNIingreso.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDNIingreso.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDNIingreso.ForeColor = System.Drawing.Color.Black;
             this.txtDNIingreso.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDNIingreso.Location = new System.Drawing.Point(486, 423);
@@ -92,33 +91,20 @@
             this.txtDNIingreso.PasswordChar = '\0';
             this.txtDNIingreso.PlaceholderText = "";
             this.txtDNIingreso.SelectedText = "";
-            this.txtDNIingreso.Size = new System.Drawing.Size(284, 56);
+            this.txtDNIingreso.Size = new System.Drawing.Size(357, 59);
             this.txtDNIingreso.TabIndex = 40;
             this.txtDNIingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDNIingreso.TextChanged += new System.EventHandler(this.txtCupo_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(486, 61);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 32);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "Aviso";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(486, 367);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(486, 356);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 30);
+            this.label2.Size = new System.Drawing.Size(204, 40);
             this.label2.TabIndex = 44;
             this.label2.Text = "Ingrese su DNI";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -136,7 +122,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnIngresar, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtDNIingreso, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblAviso, 1, 1);
             this.tableLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -145,8 +131,8 @@
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanel1.RowCount = 7;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.89324F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.072478F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -154,6 +140,28 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1904, 1041);
             this.tableLayoutPanel1.TabIndex = 45;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // lblAviso
+            // 
+            this.lblAviso.BackColor = System.Drawing.Color.Transparent;
+            this.lblAviso.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.lblAviso.DefaultText = "";
+            this.lblAviso.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.lblAviso.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.lblAviso.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.lblAviso.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.lblAviso.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.lblAviso.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAviso.ForeColor = System.Drawing.Color.Black;
+            this.lblAviso.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.lblAviso.Location = new System.Drawing.Point(488, 69);
+            this.lblAviso.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.lblAviso.Name = "lblAviso";
+            this.lblAviso.PasswordChar = '\0';
+            this.lblAviso.PlaceholderText = "";
+            this.lblAviso.SelectedText = "";
+            this.lblAviso.Size = new System.Drawing.Size(457, 96);
+            this.lblAviso.TabIndex = 47;
             // 
             // frmIngresos
             // 
@@ -176,9 +184,9 @@
         private System.Windows.Forms.Label lblNombreCliente;
         private Guna.UI2.WinForms.Guna2Button btnIngresar;
         private Guna.UI2.WinForms.Guna2TextBox txtDNIingreso;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Timer timer;
+        private Guna.UI2.WinForms.Guna2TextBox lblAviso;
     }
 }
