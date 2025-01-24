@@ -157,7 +157,7 @@
             this.btnColorBordeCartelIngreso.FillColor = System.Drawing.Color.PaleTurquoise;
             this.btnColorBordeCartelIngreso.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnColorBordeCartelIngreso.ForeColor = System.Drawing.Color.Black;
-            this.btnColorBordeCartelIngreso.Location = new System.Drawing.Point(344, 456);
+            this.btnColorBordeCartelIngreso.Location = new System.Drawing.Point(258, 453);
             this.btnColorBordeCartelIngreso.Margin = new System.Windows.Forms.Padding(5);
             this.btnColorBordeCartelIngreso.Name = "btnColorBordeCartelIngreso";
             this.btnColorBordeCartelIngreso.Size = new System.Drawing.Size(38, 38);
@@ -177,7 +177,7 @@
             this.btnColorFondoIngreso.FillColor = System.Drawing.Color.PaleTurquoise;
             this.btnColorFondoIngreso.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnColorFondoIngreso.ForeColor = System.Drawing.Color.Black;
-            this.btnColorFondoIngreso.Location = new System.Drawing.Point(258, 402);
+            this.btnColorFondoIngreso.Location = new System.Drawing.Point(258, 401);
             this.btnColorFondoIngreso.Margin = new System.Windows.Forms.Padding(5);
             this.btnColorFondoIngreso.Name = "btnColorFondoIngreso";
             this.btnColorFondoIngreso.Size = new System.Drawing.Size(38, 38);
@@ -270,12 +270,12 @@
             this.lblColorCartelIngreso.AutoSize = true;
             this.lblColorCartelIngreso.BackColor = System.Drawing.Color.Transparent;
             this.lblColorCartelIngreso.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColorCartelIngreso.Location = new System.Drawing.Point(11, 456);
+            this.lblColorCartelIngreso.Location = new System.Drawing.Point(11, 461);
             this.lblColorCartelIngreso.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblColorCartelIngreso.Name = "lblColorCartelIngreso";
-            this.lblColorCartelIngreso.Size = new System.Drawing.Size(317, 30);
+            this.lblColorCartelIngreso.Size = new System.Drawing.Size(228, 30);
             this.lblColorCartelIngreso.TabIndex = 35;
-            this.lblColorCartelIngreso.Text = "Color de borde del cartel Ingreso";
+            this.lblColorCartelIngreso.Text = "Color de letra del Aviso";
             // 
             // lblCartelIngreso
             // 
@@ -294,7 +294,7 @@
             this.lblColorFondoIngreoso.AutoSize = true;
             this.lblColorFondoIngreoso.BackColor = System.Drawing.Color.Transparent;
             this.lblColorFondoIngreoso.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColorFondoIngreoso.Location = new System.Drawing.Point(9, 402);
+            this.lblColorFondoIngreoso.Location = new System.Drawing.Point(11, 401);
             this.lblColorFondoIngreoso.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblColorFondoIngreoso.Name = "lblColorFondoIngreoso";
             this.lblColorFondoIngreoso.Size = new System.Drawing.Size(201, 30);

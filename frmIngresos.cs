@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace System_Fitness
 {
     public partial class frmIngresos : Form
     {
+        private Random random = new Random();
         public frmIngresos()
         {
             InitializeComponent();
@@ -22,22 +18,35 @@ namespace System_Fitness
         }
         private void CargarConfiguracionIngreso()
         {
-            DataTable dt = db.ObtenerConfiguracion();  // Asumiendo que tienes un método para obtener la configuración
+            DataTable dt = db.ObtenerConfiguracion(); // Asumiendo que tienes un método para obtener la configuración
 
             if (dt.Rows.Count > 0)
             {
-                // Aplicar ColorFondoIngreso al BackColor del formulario
                 string colorFondoIngreso = dt.Rows[0]["ColorFondoIngreso"].ToString();
-                this.BackColor = ColorTranslator.FromHtml(colorFondoIngreso);  // Asignar el color de fondo del formulario
-
-                // Aplicar ColorBordeCartelIngreso al borde del Label
-                string colorBordeCartelIngreso = dt.Rows[0]["ColorBordeCartelIngreso"].ToString(); 
-
-                // Aplicar el texto del CartelIngreso al Label
+                tableLayoutPanel1.BackColor = ColorTranslator.FromHtml(colorFondoIngreso); 
+                string colorBordeCartelIngreso = dt.Rows[0]["ColorBordeCartelIngreso"].ToString();
+                lblAviso.ForeColor = ColorTranslator.FromHtml(colorBordeCartelIngreso); 
                 string cartelIngreso = dt.Rows[0]["CartelIngreso"].ToString();
-                lblAviso.Text = cartelIngreso;  // Asignar el texto del cartel
+                lblAviso.Text = cartelIngreso; // Asignar texto
             }
         }
+        private void lblAviso_Paint(object sender, PaintEventArgs e)
+        {
+            // Obtener el color del borde del Tag
+            if (lblAviso.Tag is Color colorBorde)
+            {
+                // Grosor del borde
+                int grosor = 2;
+
+                // Dibujar el borde
+                using (Pen pen = new Pen(colorBorde, grosor))
+                {
+                    e.Graphics.DrawRectangle(pen,
+                        new Rectangle(0, 0, lblAviso.Width - 1, lblAviso.Height - 1));
+                }
+            }
+        }
+
         private dbQuery db = new dbQuery();
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -81,6 +90,7 @@ namespace System_Fitness
                 timer.Tick += (s, e) =>
                 {
                     lblNombreCliente.Text = string.Empty;
+                    lblNombreCliente.ForeColor = Color.Black; // Resetear color
                     timer.Stop();
                 };
             }
@@ -90,8 +100,7 @@ namespace System_Fitness
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            dbQuery db = new dbQuery();
-            txtDNIingreso.Focus(); // Mantiene el foco en el campo del DNI
+            txtDNIingreso.Focus(); // Mantener foco en el campo del DNI
 
             try
             {
@@ -99,18 +108,16 @@ namespace System_Fitness
                 if (string.IsNullOrWhiteSpace(txtDNIingreso.Text) || !int.TryParse(txtDNIingreso.Text, out int dni))
                 {
                     lblNombreCliente.Text = "Ingrese un DNI válido.";
+                    lblNombreCliente.ForeColor = Color.Red; // Mensaje de error en rojo
                     StartTimerToClearLabel();
                     return;
                 }
-                    
-                // Instancia de la clase dbQuery
-                
 
                 // Obtener el ClienteID y el nombre del cliente por su DNI
                 string consultaCliente = "SELECT ClienteID, Nombre FROM Clientes WHERE DNI = @Dni";
                 SqlParameter[] parametros = new SqlParameter[]
                 {
-            new SqlParameter("@Dni", dni)
+                    new SqlParameter("@Dni", dni)
                 };
 
                 DataTable clienteInfo = db.ExecuteQuery(consultaCliente, parametros);
@@ -122,14 +129,14 @@ namespace System_Fitness
 
                     // Consulta para verificar pagos recientes
                     string consultaPagosRecientes = @"
-                SELECT COUNT(*) 
-                FROM Pagos 
-                WHERE ClienteID = @ClienteID 
-                AND FechaPago >= DATEADD(DAY, -30, GETDATE());";
+                        SELECT COUNT(*) 
+                        FROM Pagos 
+                        WHERE ClienteID = @ClienteID 
+                        AND FechaPago >= DATEADD(DAY, -30, GETDATE());";
 
                     SqlParameter[] parametrosPagos = new SqlParameter[]
                     {
-                new SqlParameter("@ClienteID", clienteId)
+                        new SqlParameter("@ClienteID", clienteId)
                     };
 
                     int pagosRecientes = Convert.ToInt32(db.ExecuteScalar(consultaPagosRecientes, parametrosPagos));
@@ -137,20 +144,31 @@ namespace System_Fitness
                     if (pagosRecientes > 0)
                     {
                         // Registrar la visita
-                        int resultado = db.RegistrarVisita(clienteId);
+                        db.RegistrarVisita(clienteId);
 
-                        lblNombreCliente.Text = $"Bienvenido, {nombreCliente}.";
-                        txtDNIingreso.Text = "";
-                        
+                        // Mensajes personalizados aleatorios
+                        string[] mensajes = new string[]
+                        {
+                            $"¡Hola {nombreCliente}! 😄 ¡Qué bueno verte de nuevo!",
+                            $"¡Hola {nombreCliente}! 😄 ¡Vamos por más juntos! 💪",
+                            $"¡Hola {nombreCliente}! 🏋️‍♂️ ¡Qué bueno verte de nuevo!",
+                            $"¡Hola {nombreCliente}! ✨ ¡Va a ser un gran día de entrenamiento! 💥"
+                        };
+
+                        lblNombreCliente.Text = mensajes[random.Next(mensajes.Length)];
+                        lblNombreCliente.ForeColor = Color.Green; // Cliente con acceso permitido
+                        txtDNIingreso.Text = ""; // Limpiar campo
                     }
                     else
                     {
-                        lblNombreCliente.Text = $"Lo sentimos, {nombreCliente}.";
+                        lblNombreCliente.Text = $"Lo sentimos, {nombreCliente}. No tiene acceso.";
+                        lblNombreCliente.ForeColor = Color.Red; // Cliente sin acceso
                     }
                 }
                 else
                 {
                     lblNombreCliente.Text = "DNI no registrado en el sistema.";
+                    lblNombreCliente.ForeColor = Color.Red; // Mensaje de error en rojo
                 }
 
                 StartTimerToClearLabel(); // Limpia el mensaje después de un tiempo
@@ -158,14 +176,9 @@ namespace System_Fitness
             catch (Exception ex)
             {
                 lblNombreCliente.Text = $"Error: {ex.Message}";
+                lblNombreCliente.ForeColor = Color.Red; // Mensaje de error en rojo
                 StartTimerToClearLabel();
             }
-
-        }
-
-        private void lblTipoClase_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

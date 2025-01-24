@@ -34,8 +34,8 @@
             this.txtDNIingreso = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblAviso = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.lblAviso = new Guna.UI2.WinForms.Guna2TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +49,6 @@
             this.lblNombreCliente.Name = "lblNombreCliente";
             this.lblNombreCliente.Size = new System.Drawing.Size(0, 40);
             this.lblNombreCliente.TabIndex = 42;
-            this.lblNombreCliente.Click += new System.EventHandler(this.lblTipoClase_Click);
             // 
             // btnIngresar
             // 
@@ -143,25 +142,12 @@
             // 
             // lblAviso
             // 
-            this.lblAviso.BackColor = System.Drawing.Color.Transparent;
-            this.lblAviso.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.lblAviso.DefaultText = "";
-            this.lblAviso.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.lblAviso.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.lblAviso.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.lblAviso.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.lblAviso.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.lblAviso.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAviso.ForeColor = System.Drawing.Color.Black;
-            this.lblAviso.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.lblAviso.Location = new System.Drawing.Point(488, 69);
-            this.lblAviso.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.lblAviso.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAviso.Location = new System.Drawing.Point(484, 61);
             this.lblAviso.Name = "lblAviso";
-            this.lblAviso.PasswordChar = '\0';
-            this.lblAviso.PlaceholderText = "";
-            this.lblAviso.SelectedText = "";
-            this.lblAviso.Size = new System.Drawing.Size(457, 96);
-            this.lblAviso.TabIndex = 47;
+            this.lblAviso.Size = new System.Drawing.Size(768, 283);
+            this.lblAviso.TabIndex = 45;
+            this.lblAviso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmIngresos
             // 
@@ -187,6 +173,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Timer timer;
-        private Guna.UI2.WinForms.Guna2TextBox lblAviso;
+        private System.Windows.Forms.Label lblAviso;
     }
 }
